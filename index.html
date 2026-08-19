@@ -32,7 +32,9 @@
             min-height: 600px;
         }
 
-        /* ASYA DEFO */
+        /* ================================
+           DESKTOP
+        ================================= */
 
         .logo {
             position: absolute;
@@ -45,8 +47,6 @@
 
             display: block;
         }
-
-        /* WILL BE SOON + 2026 */
 
         .info {
             position: absolute;
@@ -69,33 +69,137 @@
         }
 
 
-        /* --------------------------------
+        /* ================================
+           TABLET
+        ================================= */
+
+        @media (min-width: 701px) and (max-width: 1100px) {
+
+            .logo {
+                left: 5vw;
+                bottom: 19vh;
+                width: 23vw;
+            }
+
+            .info {
+                left: 50vw;
+                top: 58vh;
+                font-size: 23px;
+            }
+        }
+
+
+        /* ================================
            MOBILE
-        -------------------------------- */
+        ================================= */
 
         @media (max-width: 700px) {
 
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                min-height: 100%;
+            }
+
+            body {
+                overflow: hidden;
+            }
+
             .coming-soon {
-                min-height: 100svh;
+                width: 100%;
                 height: 100svh;
+                min-height: 500px;
+                position: relative;
+            }
+
+            /* LOGO */
+
+            .logo {
+                position: absolute;
+
+                left: 7vw;
+                bottom: 21vh;
+
+                width: 39vw;
+                max-width: 190px;
+                height: auto;
+            }
+
+            /* TEXT */
+
+            .info {
+                position: absolute;
+
+                left: auto;
+                right: 7vw;
+                bottom: 21.2vh;
+
+                top: auto;
+
+                color: #2147C7;
+
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: clamp(14px, 4.1vw, 18px);
+                line-height: 1.35;
+                font-weight: 400;
+                letter-spacing: -0.2px;
+
+                white-space: nowrap;
+            }
+
+            .info div {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+
+        /* ================================
+           VERY SMALL PHONES
+        ================================= */
+
+        @media (max-width: 380px) {
+
+            .logo {
+                left: 6vw;
+                bottom: 20vh;
+                width: 40vw;
+            }
+
+            .info {
+                right: 6vw;
+                bottom: 20.2vh;
+                font-size: 14px;
+            }
+        }
+
+
+        /* ================================
+           LANDSCAPE PHONES
+        ================================= */
+
+        @media (max-width: 700px) and (orientation: landscape) {
+
+            .coming-soon {
+                height: 100svh;
+                min-height: 350px;
             }
 
             .logo {
                 left: 7vw;
-                bottom: 22vh;
-                width: 38vw;
+                bottom: 15vh;
+                width: 28vw;
+                max-width: 170px;
             }
 
             .info {
-                left: 52vw;
-                top: auto;
-                bottom: 23vh;
-
-                font-size: 16px;
-                line-height: 1.35;
-                letter-spacing: -0.2px;
+                right: 7vw;
+                bottom: 15.2vh;
+                font-size: 15px;
             }
         }
+
     </style>
 </head>
 
@@ -103,14 +207,14 @@
 
     <main class="coming-soon">
 
-        <!-- ТВОЙ ЛОГОТИП -->
+        <!-- ASYA DEFO -->
         <img
             class="logo"
             src="logo.png"
             alt="ASYA DEFO"
         >
 
-        <!-- ТЕКСТ -->
+        <!-- WILL BE SOON + 2026 -->
         <div class="info">
             <div>will be soon</div>
             <div>2026</div>
