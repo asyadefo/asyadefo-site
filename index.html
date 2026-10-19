@@ -1,207 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>asyadefo — портфолио</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#002FA7;--bg:#F3F3F3;--pad:4.1vw;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--txt:clamp(11px,1.6vw,19px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--blue);font-family:var(--sans);font-size:var(--txt);line-height:1.2;padding-top:max(44px,4.2vw);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
 
-    <title>ASYA DEFO</title>
+/* ---------- header ---------- */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;height:max(44px,4.2vw);background:#fff}
+.header .logo{position:absolute;left:var(--pad);top:50%;transform:translateY(-50%);display:block}
+.header .logo img{display:block;width:max(70px,7.6vw);height:auto}
+.nav a{position:absolute;top:50%;transform:translateY(-50%);font-size:var(--txt);padding:3px 5px;white-space:nowrap}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav a:hover::after,.nav a.active::after{transform:scaleX(1)}
+.nav a:nth-child(1){left:50.2vw}
+.nav a:nth-child(2){left:61.6vw}
+.nav a:nth-child(3){left:73.4vw}
+.nav a:nth-child(4){right:calc(var(--pad) - 5px)}
 
-    <link rel="icon" type="image/png" href="favicon.png">
+/* ---------- hero ---------- */
+.strip{height:23.2vw;min-height:110px;background-image:url("img/first-photo.png");background-position:0 45%;background-size:100% auto;background-repeat:no-repeat}
+.brand{position:relative;z-index:2;padding:0 var(--pad)}
+.fit{display:inline-block;white-space:nowrap;font-family:var(--serif);font-style:italic;font-weight:400;line-height:.9}
+.brand .fit{font-size:30vw;letter-spacing:-.03em}
+.brand h1{font-weight:400;margin-top:-.217em;font-size:30vw;line-height:0}
+.brand h1 .fit{display:block;width:max-content}
+.sub{display:grid;grid-template-columns:50.6% 1fr;margin-top:1.4vw;font-size:var(--txt);line-height:1.17;position:relative;z-index:3}
+.pill{display:inline-block;border:1px solid var(--blue);border-radius:50%;padding:.12em .42em;margin-left:.1em;line-height:1.15}
 
-    <style>
+/* ---------- about ---------- */
+.about{position:relative;padding:0 var(--pad);margin-top:18.7vw}
+.about h2{font-weight:400;line-height:0;font-size:31vw}
+.about h2 .fit{letter-spacing:-.02em}
+.about p{margin-top:1.6vw;padding-left:1.4vw;font-size:var(--txt);line-height:1.2}
 
-        /* ================================
-           RESET
-        ================================= */
+/* ---------- frame ---------- */
+.frame{position:relative;width:65.5vw;margin:0 auto;container-type:inline-size;aspect-ratio:1050/1385;padding-bottom:0}
+.frame>img{position:absolute;display:block}
+.plate{inset:0;width:100%;height:100%;z-index:1}
+.stamp{left:6.7cqw;top:36.4cqw;width:85cqw;height:81cqw;transform:rotate(-3deg);z-index:2;filter:brightness(1.07) drop-shadow(0 .6cqw 1.2cqw rgba(0,0,0,.28))}
+.polaroid{left:34.6cqw;top:14.4cqw;width:52.9cqw;height:auto;z-index:3;filter:drop-shadow(0 .8cqw 1.4cqw rgba(0,0,0,.28))}
+.believe{position:absolute;z-index:4;left:22.4cqw;top:51.9cqw}
+.believe h3{
+  font-family: var(--serif);
+  font-style: italic;font-weight:400;
+  font-size: 11.3cqw;line-height:.76;
+  letter-spacing: -.005em;
+  white-space: nowrap
+}
+.believe h3 small {
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--txt);
+  letter-spacing: 0;
+  margin-left: .5cqw;
+}
+.believe p {
+  font-size: var(--txt);
+  line-height: 1.2;
+  white-space: nowrap;
+  padding-left: 2.2cqw;
+}
+.believe p:first-of-type{
+  margin-top: 3.1cqw
+}
+.believe p+p{margin-top:1.2em}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+.end{height:22vw}
 
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-        }
-
-        body {
-            background: #F5F5F5;
-            font-family: Arial, Helvetica, sans-serif;
-            overflow: hidden;
-        }
-
-
-        /* ================================
-           MAIN
-        ================================= */
-
-        .coming-soon {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            height: 100svh;
-        }
-
-
-        /* ================================
-           LOGO
-        ================================= */
-
-        .logo {
-            position: absolute;
-
-            left: 4.25vw;
-            top: 57.7vh;
-
-            width: 17.5vw;
-            height: auto;
-
-            display: block;
-        }
-
-
-        /* ================================
-           TEXT
-        ================================= */
-
-        .info {
-            position: absolute;
-
-            left: 49.6vw;
-            top: 57.7vh;
-
-            color: #2147C7;
-
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 27px;
-            line-height: 1.35;
-            font-weight: 400;
-            letter-spacing: -0.4px;
-
-            white-space: nowrap;
-        }
-
-        .info div {
-            margin: 0;
-            padding: 0;
-        }
-
-
-        /* ================================
-           TABLET
-        ================================= */
-
-        @media (min-width: 701px) and (max-width: 1100px) {
-
-            .logo {
-                left: 5vw;
-                top: 58vh;
-                width: 23vw;
-            }
-
-            .info {
-                left: 50vw;
-                top: 58vh;
-                font-size: 23px;
-            }
-        }
-
-
-        /* ================================
-           MOBILE
-        ================================= */
-
-        @media (max-width: 700px) {
-
-            .coming-soon {
-                width: 100%;
-                height: 100svh;
-            }
-
-            .logo {
-                left: 7vw;
-                top: 56vh;
-
-                width: 39vw;
-                max-width: 190px;
-            }
-
-            .info {
-                left: auto;
-                right: 7vw;
-                top: 56vh;
-
-                font-size: clamp(14px, 4.1vw, 18px);
-                line-height: 1.35;
-                letter-spacing: -0.2px;
-            }
-        }
-
-
-        /* ================================
-           VERY SMALL PHONES
-        ================================= */
-
-        @media (max-width: 380px) {
-
-            .logo {
-                left: 6vw;
-                top: 56vh;
-                width: 40vw;
-            }
-
-            .info {
-                right: 6vw;
-                top: 56vh;
-                font-size: 14px;
-            }
-        }
-
-
-        /* ================================
-           LANDSCAPE MOBILE
-        ================================= */
-
-        @media (max-width: 700px) and (orientation: landscape) {
-
-            .logo {
-                left: 7vw;
-                top: 55vh;
-
-                width: 28vw;
-                max-width: 170px;
-            }
-
-            .info {
-                right: 7vw;
-                top: 55vh;
-
-                font-size: 15px;
-            }
-        }
-
-    </style>
+@media(max-width:700px){
+  .nav a:nth-child(1){left:36vw}.nav a:nth-child(2){left:51vw}.nav a:nth-child(3){left:69vw}
+  .frame{width:118vw;margin-left:-9vw}
+  .sub{grid-template-columns:48% 1fr}
+}
+</style>
 </head>
-
-
 <body>
 
-    <main class="coming-soon">
+<header class="header">
+  <a class="logo" href="#top" aria-label="asyadefo"><img src="img/logo.png" alt="asyadefo"></a>
+  <nav class="nav">
+    <a href="#top" class="active">работы</a>
+    <a href="#about">обо мне</a>
+    <a href="archive.html">архив</a>
+    <a href="#contact">связь</a>
+  </nav>
+</header>
 
-        <img
-            class="logo"
-            src="logo.png"
-            alt="ASYA DEFO"
-        >
+<main id="top">
+  <div class="strip" role="img/cover.png" aria-label="Фото автора"></div>
 
-        <div class="info">
-            <div>will be soon</div>
-            <div>2026</div>
-        </div>
+  <div class="brand">
+    <h1><span class="fit" data-fit>asyadefo</span></h1>
+    <div class="sub">
+      <div>я междисциплинарный<br>дизайнер</div>
+      <div>и это мое <span class="pill">портфолио!</span></div>
+    </div>
+  </div>
 
-    </main>
+  <section class="about" id="about">
+    <h2><span class="fit" data-fit>обо мне</span></h2>
+    <p>диджитал дизайнер из санкт-петербурга. фокусируюсь<br>на минимализме, ясной структуре и визуальных<br>решениях, которые работают.</p>
+  </section>
 
+  <div class="frame">
+    <img class="plate" src="img/plate.png" alt="">
+    <div class="believe">
+      <h3>я считаю,<br>что <small>красиво недостаточно.</small></h3>
+      <p>Хороший дизайн должен быть<br>одновременно понятным,<br>функциональным и неожиданным.</p>
+      <p>Меня вдохновляет психология<br>восприятия, экспериментальная<br>типографика и моменты, когда<br>цифровой дизайн становится реальным<br>объектом: книгой, упаковкой, журналом<br>или пространством.</p>
+    </div>
+  </div>
+
+  <div class="end" id="contact"></div>
+</main>
+
+<script>
+(function(){
+  /* растягиваем крупные надписи ровно на ширину контейнера */
+  function fit(){
+    document.querySelectorAll('[data-fit]').forEach(function(el){
+      var box=el.closest('.brand,.about'), cs=getComputedStyle(box);
+      var target=box.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+      el.style.fontSize='100px';
+      var w=el.getBoundingClientRect().width;
+      var size=100*target/w;
+      el.style.fontSize=size+'px';
+      el.parentElement.style.fontSize=size+'px';
+    });
+  }
+  fit();
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+  window.addEventListener('resize',fit);
+
+  /* активный пункт меню */
+  var links=document.querySelectorAll('.nav a[href^="#"]');
+  function spy(){
+    var y=window.scrollY+window.innerHeight*.4, cur=links[0];
+    links.forEach(function(a){var t=document.querySelector(a.getAttribute('href'));if(t&&t.getBoundingClientRect().top+window.scrollY<=y)cur=a});
+    links.forEach(function(a){a.classList.toggle('active',a===cur)});
+  }
+  window.addEventListener('scroll',spy,{passive:true});spy();
+})();
+</script>
 </body>
 </html>
