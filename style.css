@@ -661,5 +661,5 @@ main{overflow-x:clip}
 /* «связь» на телефоне: стрелка справа от заголовка, не заходит на текст (по макету) */
 @media(max-width:1500px){
   .s-arrow{right:2.4vw;top:2vw;width:20.7vw}
-  .contact__text{margin-top:5.5vw}
+  .contact__text{margin-top:50.5vw}
 }
