@@ -667,7 +667,7 @@ main{overflow-x:clip}
 @media (max-width:700px){
   .frame-wrap .s-omg     {left:1vw !important;  right:auto !important; top:-14% !important; width:30vw !important}
   .frame-wrap .s-question{left:2vw !important;  right:auto !important; top:15% !important;  width:20vw !important}
-  .frame-wrap .s-heart   {left:3vw !important;  right:auto !important; top:85% !important;  width:25vw !important}
+  .frame-wrap .s-heart   {left:3vw !important;  right:auto !important; top:75% !important;  width:25vw !important}
 
   .frame-wrap .s-cursor  {right:6vw !important; left:auto !important;  top:-15% !important; width:25vw !important}
   .frame-wrap .s-cool    {right:1vw !important; left:auto !important;  top:38% !important;  width:20vw !important}
