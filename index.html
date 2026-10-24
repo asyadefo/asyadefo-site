@@ -1,207 +1,587 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>ASYA DEFO</title>
-
-    <link rel="icon" type="image/png" href="favicon.png">
-
-    <style>
-
-        /* ================================
-           RESET
-        ================================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-        }
-
-        body {
-            background: #F5F5F5;
-            font-family: Arial, Helvetica, sans-serif;
-            overflow: hidden;
-        }
-
-
-        /* ================================
-           MAIN
-        ================================= */
-
-        .coming-soon {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            height: 100svh;
-        }
-
-
-        /* ================================
-           LOGO
-        ================================= */
-
-        .logo {
-            position: absolute;
-
-            left: 4.25vw;
-            top: 57.7vh;
-
-            width: 17.5vw;
-            height: auto;
-
-            display: block;
-        }
-
-
-        /* ================================
-           TEXT
-        ================================= */
-
-        .info {
-            position: absolute;
-
-            left: 49.6vw;
-            top: 57.7vh;
-
-            color: #2147C7;
-
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 27px;
-            line-height: 1.35;
-            font-weight: 400;
-            letter-spacing: -0.4px;
-
-            white-space: nowrap;
-        }
-
-        .info div {
-            margin: 0;
-            padding: 0;
-        }
-
-
-        /* ================================
-           TABLET
-        ================================= */
-
-        @media (min-width: 701px) and (max-width: 1100px) {
-
-            .logo {
-                left: 5vw;
-                top: 58vh;
-                width: 23vw;
-            }
-
-            .info {
-                left: 50vw;
-                top: 58vh;
-                font-size: 23px;
-            }
-        }
-
-
-        /* ================================
-           MOBILE
-        ================================= */
-
-        @media (max-width: 700px) {
-
-            .coming-soon {
-                width: 100%;
-                height: 100svh;
-            }
-
-            .logo {
-                left: 7vw;
-                top: 56vh;
-
-                width: 39vw;
-                max-width: 190px;
-            }
-
-            .info {
-                left: auto;
-                right: 7vw;
-                top: 56vh;
-
-                font-size: clamp(14px, 4.1vw, 18px);
-                line-height: 1.35;
-                letter-spacing: -0.2px;
-            }
-        }
-
-
-        /* ================================
-           VERY SMALL PHONES
-        ================================= */
-
-        @media (max-width: 380px) {
-
-            .logo {
-                left: 6vw;
-                top: 56vh;
-                width: 40vw;
-            }
-
-            .info {
-                right: 6vw;
-                top: 56vh;
-                font-size: 14px;
-            }
-        }
-
-
-        /* ================================
-           LANDSCAPE MOBILE
-        ================================= */
-
-        @media (max-width: 700px) and (orientation: landscape) {
-
-            .logo {
-                left: 7vw;
-                top: 55vh;
-
-                width: 28vw;
-                max-width: 170px;
-            }
-
-            .info {
-                right: 7vw;
-                top: 55vh;
-
-                font-size: 15px;
-            }
-        }
-
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>asyadefo — портфолио</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,400;1,500;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!-- Общие части сайта: шапка и подвал (правятся в site.js) -->
+<script src="site.js"></script>
 </head>
-
-
 <body>
 
-    <main class="coming-soon">
+<site-header home></site-header>
 
-        <img
-            class="logo"
-            src="logo.png"
-            alt="ASYA DEFO"
-        >
+<main id="top">
 
-        <div class="info">
-            <div>will be soon</div>
-            <div>2026</div>
-        </div>
+  <!-- ===== БЕЙДЖ НА ЛЕНТЕ (выпадает через пару секунд, качается, отталкивается от курсора) ===== -->
+  <div class="badge"><img class="badge-swing" src="img/badge.png" alt=""></div>
 
-    </main>
+  <div class="strip" role="img" aria-label="Фото автора"></div>
+
+  <div class="brand">
+    <h1><span class="fit" data-fit>asyadefó</span></h1>
+    <div class="sub">
+      <div>я междисциплинарный<br>дизайнер</div>
+      <div>и это мое <span class="pill">портфолио!</span></div>
+    </div>
+  </div>
+
+  <section class="about" id="about">
+    <!-- Стрелка вниз: легонько покачивается. Стоит между «asyadefo» и «обо мне» -->
+    <svg class="scroll-arrow" viewBox="0 0 146 156" aria-hidden="true"><path d="M73 0V155M1 83L73 155L145 83" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    <h2><span class="fit" data-fit>обо мне</span></h2>
+    <p>Диджитал дизайнер из Санкт-Петербурга.<br class="br-m"> Фокусируюсь<br class="br-d"> на минимализме, ясной структуре<br class="br-m"> и визуальных<br class="br-d"> решениях, которые работают.</p>
+  </section>
+
+  <!-- ===== БЛОК С ЗЕРКАЛОМ + СТИКЕРЫ ===== -->
+  <div class="frame-wrap">
+
+    <div class="frame">
+      <img class="plate" src="img/plate.png" alt="">
+      <div class="believe">
+        <h3>я считаю,<br>что <small>красиво<br class="br-m"> недостаточно.</small></h3>
+        <p>Хороший дизайн должен быть<br>одновременно понятным,<br>функциональным и неожиданным.</p>
+        <p>Меня вдохновляет психология<br>восприятия, экспериментальная<br>типографика и моменты, когда<br>цифровой дизайн становится<br class="br-m"> реальным<br class="br-d"> объектом: книгой,<br class="br-m"> упаковкой, журналом<br class="br-d"> или<br class="br-m"> пространством.</p>
+      </div>
+    </div>
+
+    <!-- СТИКЕРЫ: порядок здесь не важен. Название файла = src -->
+    <img class="sticker s-omg"      src="img/sticker-omg.png"      alt="">
+    <img class="sticker s-question" src="img/sticker-question.png" alt="">
+    <img class="sticker s-heart"    src="img/sticker-heart.png"    alt="">
+    <img class="sticker s-cursor"   src="img/sticker-cursor.png"   alt="">
+    <img class="sticker s-cool"     src="img/sticker-cool.png"     alt="">
+    <img class="sticker s-flower"   src="img/sticker-flower.png"   alt="">
+
+  </div>
+
+  <!-- ===== БЕГУЩАЯ СТРОКА (твои SVG из папки img/marquee/) =====
+       Файлы: marquee-01.svg … marquee-08.svg и marquee-08-hover.svg (кнопка, когда на неё навели).
+       Порядок слева направо: 01 веб-дизайн, 02 айдентика, 03 круг залитый, 04 социальные сети,
+       05 графический дизайнер, 06 эксперимент, 07 круг пустой, 08 «давайте сотрудничать!» -->
+  <div class="marquee">
+    <div class="marquee-track">
+
+      <div class="marquee-group">
+        <img src="img/marquee/marquee-01.svg" alt="веб-дизайн">
+        <img src="img/marquee/marquee-02.svg" alt="айдентика">
+        <img src="img/marquee/marquee-03.svg" alt="">
+        <img src="img/marquee/marquee-04.svg" alt="социальные сети">
+        <img src="img/marquee/marquee-05.svg" alt="графический дизайнер">
+        <img src="img/marquee/marquee-06.svg" alt="эксперимент">
+        <img src="img/marquee/marquee-07.svg" alt="">
+        <a class="marquee-cta" href="#contact">
+          <img class="cta-base" src="img/marquee/marquee-08.svg" alt="давайте сотрудничать!">
+          <img class="cta-hover" src="img/marquee/marquee-08-hover.svg" alt="">
+        </a>
+      </div>
+
+      <!-- Группа 2: точная копия первой, на ней держится бесшовная петля. Удалять нельзя -->
+      <div class="marquee-group" aria-hidden="true">
+        <img src="img/marquee/marquee-01.svg" alt="">
+        <img src="img/marquee/marquee-02.svg" alt="">
+        <img src="img/marquee/marquee-03.svg" alt="">
+        <img src="img/marquee/marquee-04.svg" alt="">
+        <img src="img/marquee/marquee-05.svg" alt="">
+        <img src="img/marquee/marquee-06.svg" alt="">
+        <img src="img/marquee/marquee-07.svg" alt="">
+        <a class="marquee-cta" href="#contact" tabindex="-1">
+          <img class="cta-base" src="img/marquee/marquee-08.svg" alt="">
+          <img class="cta-hover" src="img/marquee/marquee-08-hover.svg" alt="">
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== Я РАБОТАЛА С НИМИ ===== -->
+  <section class="works" id="works">
+    <h2>я работала с ними!</h2>
+
+    <div class="works-grid">
+
+      <div class="work">
+        <img src="img/logo-gazprom.svg" alt="Газпром Нефть" style="--logo-w:11vw">
+        <p>ПАО Газпром Нефть.<br>Разработка визуальных материалов для производственной безопасности, внутренних коммуникаций и Telegram-канала. Создание анимаций<br class="br-d"> и участие в разработке мобильного приложения. Работа<br class="br-d"> с данными и соблюдение фирменного стиля.</p>
+      </div>
+
+      <div class="work">
+        <img src="img/logo-otvet.svg" alt="ОтветДизайн" style="--logo-w:11.9vw">
+        <p>Студия ОтветДизайн.<br>Стажировка в дизайн-студии: участие в разработке концепции редизайна сервиса доставки еды «Достоевский» и работа над реальными клиентскими задачами.</p>
+      </div>
+
+      <div class="work work--tall">
+        <img src="img/logo-studio28.svg" alt="Студия28" style="--logo-w:6.7vw">
+        <p>Студия28.<br>Разработка сайта и визуальной концепции студии: от проработки идеи и структуры<br class="br-d"> до дизайна и реализации. Работа над реальными клиентскими проектами. Создание контента для Telegram и других социальных сетей с активным использованием ИИ в рабочих процессах.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== РАБОТЫ ===== -->
+  <section class="projects" id="portfolio-works" data-fit-box>
+    <h2 class="sec-title"><span class="fit" data-fit>Работы</span></h2>
+
+    <div class="proj-grid">
+      <a class="proj proj--a" href="project-concept.html" style="--ar:724/729">
+        <span class="cap"><span>Concept | Онлайн-платформа для обучения</span></span>
+        <span class="media"><img src="img/projects/concept.png" alt="Concept — онлайн-платформа для обучения" loading="lazy"></span>
+      </a>
+      <a class="proj proj--b" href="project-tbank.html" style="--ar:724/729">
+        <span class="cap"><span>Карта для ТБанка</span></span>
+        <span class="media"><img src="img/projects/tbank.png" alt="Концепт карты для Т-Банка" loading="lazy"></span>
+      </a>
+      <a class="proj proj--c" href="project-studio19.html" style="--ar:972/560">
+        <span class="cap"><span>Studio 19 | Сайт магазина винила</span></span>
+        <span class="media"><img src="img/projects/studio19.png" alt="Studio 19 — сайт магазина винила" loading="lazy"></span>
+      </a>
+      <a class="proj proj--d" href="project-sens.html" style="--ar:477/463">
+        <span class="cap"><span>Сенс | Приложение умного дома</span></span>
+        <span class="media"><img src="img/projects/sens.png" alt="Сенс — приложение умного дома" loading="lazy"></span>
+      </a>
+      <a class="proj proj--e" href="project-concept-website.html" style="--ar:477/463">
+        <span class="cap"><span>silence | журнал</span></span>
+        <span class="media"><img src="img/projects/silence.png" alt="silence — журнал" loading="lazy"></span>
+      </a>
+      <a class="proj proj--f" href="project-studio28.html" style="--ar:477/463">
+        <span class="cap"><span>28 | Колода карт</span></span>
+        <span class="media"><img src="img/projects/studio28.png" alt="28 — колода карт" loading="lazy"></span>
+      </a>
+    </div>
+
+    <!-- Большая кнопка: при наведении синяя, текст белый. Ведёт вниз, на экран «связь» -->
+    <a class="cta-big" href="#contact" data-fit-box data-fit-ratio=".905">
+      <span class="cta-text"><span>давайте</span><span class="fit" data-fit>сотрудничать!</span></span>
+    </a>
+  </section>
+
+  <!-- ===== АРХИВ =====
+       Каждая карточка — кнопка. Что менять:
+         data-media  — путь к фото или видео (.jpg .png .webp .mp4 .webm). Тип понимается по расширению.
+                       Это и картинка в сетке, и картинка в попапе после клика
+         первая строка в .cap — название, вторая — короткая подпись над картинкой
+         .more       — текст для попапа (после клика)
+         style       — --c колонка (0–5), --s сколько колонок занимает (1 или 2),
+                       --y отступ сверху, --ar пропорции картинки (ширина/высота) -->
+  <section class="archive" id="archive" data-fit-box>
+    <h2 class="sec-title sec-title--bold"><span class="fit" data-fit>Архив</span></h2>
+    <p class="archive__sub">Отдельные проекты, эксперименты и графические решения</p>
+
+    <div class="arch-grid" aria-label="Проекты в архиве">
+<!-- 01 · стример с комиксом -->
+      <button class="arch arch--w" type="button" style="--c:2;--s:2;--y:4.0vw;--ar:476/260" data-media="img/archive/buster.mp4">
+        <span class="cap"><span>Комикс и Слава Бустер</span><span>Коллаборация МЕСТЬ x TORNADO</span></span>
+        <span class="media"></span>
+        <span class="more">Создание комикса для коллаборации МЕСТЬ x TORNADO.
+          Комикс полностью создавался через ИИ. Печатные версии лежали в каждой коробке новой коллекции кроссовок, которые блогеры получали в рассылке от бренда.</span>
+      </button>
+<!-- 02 · предмет на светлом фоне -->
+      <button class="arch" type="button" style="--c:5;--s:1;--y:10.06vw;--ar:228/193" data-media="img/archive/box.png">
+        <span class="cap"><span>Упаковка</span><span>Набор для ухода за винилом</span></span>
+        <span class="media"></span>
+        <span class="more">Упаковка для ухода за винилом, магазина виниловых проигрывателей и пластинок, вдохновленный философией и эстетикой Баухауса.</span>
+      </button>
+<!-- 03 · коробка МЕСТЬ × TORNADO -->
+      <button class="arch" type="button" style="--c:0;--s:1;--y:12.5vw;--ar:228/290" data-media="img/archive/tornado.png">
+        <span class="cap"><span>МЕСТЬ x TORNADO</span><span>Создание комикса</span></span>
+        <span class="media"></span>
+        <span class="more">Здесь будет небольшое описание проекта: что это, что было задачей и что получилось.</span>
+      </button>
+<!-- 04 · show reel -->
+      <button class="arch arch--w" type="button" style="--c:4;--s:2;--y:26.88vw;--ar:477/318" data-media="img/archive/showreel.mp4">
+        <span class="cap"><span>Show reel</span><span>Анимация моих работ</span></span>
+        <span class="media"></span>
+        <span class="more">Здесь будет небольшое описание проекта: что это, что было задачей и что получилось.</span>
+      </button>
+<!-- 05 · «Новый марафон знаний» -->
+      <button class="arch arch--w" type="button" style="--c:1;--s:2;--y:27.94vw;--ar:477/259" data-media="img/archive/Marathon.mp4">
+        <span class="cap"><span>Газпром Нефть</span><span>Анимация для марафона знаний</span></span>
+        <span class="media"></span>
+        <span class="more">Создание анимации для широкоформатного баннера под мероприятие «Марафон знаний»</span>
+      </button>
+<!-- 06 · коллаж с одеждой -->
+      <button class="arch" type="button" style="--c:3;--s:1;--y:42.69vw;--ar:229/298" data-media="img/archive/collage.png">
+        <span class="cap"><span>Revenge</span><span>Постер в нейросети</span></span>
+        <span class="media"></span>
+        <span class="more">Здесь будет небольшое описание проекта: что это, что было задачей и что получилось.</span>
+      </button>
+<!-- 07 · групповое фото с лентой -->
+      <button class="arch arch--w" type="button" style="--c:0;--s:2;--y:49.5vw;--ar:477/377" data-media="img/archive/gazprom event.png">
+        <span class="cap"><span>Газпром Нефть</span><span>Оформление мероприятия</span></span>
+        <span class="media"></span>
+        <span class="more">Оформление мероприятия «Лаборатория производственной безопасности» для Газпром Нефть. Предпечатная подготовка и диджитал носители.</span>
+      </button>
+<!-- 08 · футболка -->
+      <button class="arch" type="button" style="--c:5;--s:1;--y:59.12vw;--ar:229/318" data-media="img/archive/tshirt.png">
+        <span class="cap"><span>Courage</span><span>Футболка для теннисного клуба</span></span>
+        <span class="media"></span>
+        <span class="more">Создание логотипа и узора для футболки теннисного клуба Courage. Предпечатная подготовка.</span>
+      </button>
+<!-- 09 · моушн-студия ANY -->
+      <button class="arch arch--w" type="button" style="--c:2;--s:2;--y:72.25vw;--ar:476/260" data-media="img/archive/any.mp4">
+        <span class="cap"><span>ANY</span><span>Концепция сайта и анимация</span></span>
+        <span class="media"></span>
+        <span class="more">ANY — смелая дизайн студия, в которой любая идея оживает через движение, эмоцию и смысл. Задача: создать для них сайт портфолио.</span>
+      </button>
+<!-- 10 · баночка -->
+      <button class="arch" type="button" style="--c:0;--s:1;--y:80.69vw;--ar:228/233" data-media="img/archive/zxl.png">
+        <span class="cap"><span>ZXL</span><span>свечи</span></span>
+        <span class="media"></span>
+        <span class="more">Здесь будет небольшое описание проекта: что это, что было задачей и что получилось.</span>
+      </button>
+<!-- 11 · календарь -->
+      <button class="arch" type="button" style="--c:4;--s:1;--y:85.19vw;--ar:228/323" data-media="img/archive/calendar.png">
+        <span class="cap"><span>Календарь 2026 года</span><span></span></span>
+        <span class="media"></span>
+        <span class="more">Здесь будет небольшое описание проекта: что это, что было задачей и что получилось.</span>
+      </button>
+<!-- 12 · Купол.360 -->
+      <button class="arch arch--w" type="button" style="--c:1;--s:2;--y:97.06vw;--ar:477/342" data-media="img/archive/cpl360.png">
+        <span class="cap"><span>Купол.360</span><span>Приложение по безопасности</span></span>
+        <span class="media"></span>
+        <span class="more">Мобильное приложение для комплексной безопасности учебных заведений. Включает мгновенное оповещение о ЧС, пошаговые алгоритмы действий, инструкции по первой помощи и чек-листы для контроля выполнения рекомендаций.</span>
+      </button>
+<!-- 13 · блокнот в руке -->
+      <button class="arch" type="button" style="--c:5;--s:1;--y:106.56vw;--ar:229/234" data-media="img/archive/sexandthecity.png">
+        <span class="cap"><span>Блокнот</span><span></span></span>
+        <span class="media"></span>
+        <span class="more">Здесь будет небольшое описание проекта: что это, что было задачей и что получилось.</span>
+      </button>
+<!-- 14 · кофе и телефон -->
+      <button class="arch arch--w" type="button" style="--c:3;--s:2;--y:115.25vw;--ar:476/526" data-media="img/archive/recipy.png">
+        <span class="cap"><span>Recipy</span><span>Концепция приложения с рецептами</span></span>
+        <span class="media"></span>
+        <span class="more">Больше не нужно искать любимый рецепт на клочке бумаги! Храните и организуйте кулинарные шедевры в одном удобном приложении.</span>
+      </button>
+<!-- 15 · книга на столе -->
+      <button class="arch" type="button" style="--c:0;--s:1;--y:116.56vw;--ar:229/324" data-media="img/archive/book cat.png">
+        <span class="cap"><span>Название проекта</span><span>Короткое описание</span></span>
+        <span class="media"></span>
+        <span class="more">Здесь будет небольшое описание проекта: что это, что было задачей и что получилось.</span>
+      </button>
+<!-- 16 · ночной город -->
+      <button class="arch" type="button" style="--c:1;--s:1;--y:132.56vw;--ar:229/324" data-media="img/archive/tornado.mp4">
+        <span class="cap"><span>МЕСТЬ x TORNADO</span><span>Промо ролик в нейросети</span></span>
+        <span class="media"></span>
+        <span class="more">Здесь будет небольшое описание проекта: что это, что было задачей и что получилось.</span>
+      </button>
+<!-- 17 · Neighbors -->
+      <button class="arch" type="button" style="--c:5;--s:1;--y:143.5vw;--ar:228/230" data-media="img/archive/YAUZA NEIGHB 2.mp4">
+        <span class="cap"><span>YAUZA NEIGHB</span><span>Графика для соц.сетей</span></span>
+        <span class="media"></span>
+        <span class="more">Здесь будет небольшое описание проекта: что это, что было задачей и что получилось.</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ===== СВЯЗЬ =====
+       Сюда ведут пункт меню «связь» и кнопки «давайте сотрудничать!».
+       Карточка = ссылка. Что менять:
+         href           — куда ведёт (telegram, почта: mailto:адрес)
+         .ccard__title  — название карточки
+         .ccard__val    — что написано внизу карточки
+         .ccard__note   — серая подпись под карточкой -->
+  <section class="contact" id="contact">
+    <img class="sticker s-arrow" src="img/sticker-cursor.png" alt="">
+
+    <h2 class="contact__title" data-fit-box data-fit-ratio=".722" data-fit-ratio-m=".8"><span class="fit" data-fit>Есть идея?<br class="br-m"> <i>Обсудим.</i></span></h2>
+    <p class="contact__text">Открыта к предложениям о работе, новым<br class="br-m"> командам и проектам, в которых<br class="br-d"> есть<br class="br-m"> пространство для интересных решений.</p>
+
+    <div class="contact__grid">
+
+      <div class="contact__item">
+        <a class="ccard" href="https://t.me/asyadefo" target="_blank" rel="noopener">
+          <span class="ccard__title">Telegram</span>
+          <svg class="ccard__arrow" viewBox="0 0 34 34" aria-hidden="true"><path d="M.5 33.5L33 1M3 1h30v30" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          <span class="ccard__val">@asyadefo</span>
+        </a>
+        <p class="ccard__note">Для быстрого общения</p>
+      </div>
+
+      <div class="contact__item">
+        <a class="ccard" href="mailto:asyadefo@mail.ru">
+          <span class="ccard__title">Mail</span>
+          <svg class="ccard__arrow" viewBox="0 0 34 34" aria-hidden="true"><path d="M.5 33.5L33 1M3 1h30v30" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          <span class="ccard__val">asyadefo@mail.ru</span>
+        </a>
+        <p class="ccard__note">Для предложений и деталей</p>
+      </div>
+
+      <div class="contact__item">
+        <a class="ccard" href="https://t.me/asyadefo_channel" target="_blank" rel="noopener">
+          <span class="ccard__title">Telegram канал</span>
+          <svg class="ccard__arrow" viewBox="0 0 34 34" aria-hidden="true"><path d="M.5 33.5L33 1M3 1h30v30" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          <span class="ccard__val">@asyadefo_channel</span>
+        </a>
+        <p class="ccard__note">Мысли, процессы и немного жизни</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== ПОП-АП АРХИВА (заполняется скриптом archive.js) ===== -->
+  <div class="pop" id="pop" aria-hidden="true">
+    <div class="pop__panel" role="dialog" aria-modal="true" aria-labelledby="pop-title">
+      <h3 class="pop__title" id="pop-title"></h3>
+      <button class="pop__close" type="button" aria-label="Закрыть">
+        <svg viewBox="0 0 41 41" aria-hidden="true"><path d="M.5.5l40 40M40.5.5l-40 40" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
+      </button>
+      <p class="pop__text"></p>
+      <div class="pop__media"></div>
+    </div>
+  </div>
+</main>
+
+<!-- Подвал = экран «связь». Сюда ведут все кнопки «давайте сотрудничать!» и пункт меню «связь» -->
+<site-footer></site-footer>
+
+<script>
+(function(){
+  /* растягиваем крупные надписи ровно на ширину контейнера */
+  function fit(){
+    document.querySelectorAll('[data-fit]').forEach(function(el){
+      var box=el.closest('[data-fit-box],.brand,.about'), cs=getComputedStyle(box);
+      var mob=window.matchMedia('(max-width:700px)').matches;
+      var ratio=parseFloat(box.getAttribute(mob&&box.hasAttribute('data-fit-ratio-m')?'data-fit-ratio-m':'data-fit-ratio'))||1;
+      var target=(box.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight))*ratio;
+      el.style.fontSize='100px';
+      var w=el.getBoundingClientRect().width;
+      var size=100*target/w;
+      el.style.fontSize=size+'px';
+      el.parentElement.style.fontSize=size+'px';
+    });
+  }
+  fit();
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+  window.addEventListener('resize',fit);
+
+  /* активный пункт меню: в самом верху сайта не подчёркнут никто,
+     дальше подчёркивается тот раздел, по которому едешь; у самого низа — «связь» */
+  var navLinks=document.querySelectorAll('.nav a[href^="#"]');
+  function spy(){
+    var y=window.scrollY+window.innerHeight*.4, cur=null, best=-1;
+    navLinks.forEach(function(a){var t=document.querySelector(a.getAttribute('href'));if(!t)return;var top=t.getBoundingClientRect().top+window.scrollY;if(top<=y&&top>best){best=top;cur=a.getAttribute('href')}});
+    if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4)cur=navLinks[navLinks.length-1].getAttribute('href');
+    document.querySelectorAll('.nav a[href^="#"],.menu a[href^="#"]').forEach(function(a){a.classList.toggle('active',a.getAttribute('href')===cur)});
+  }
+  window.addEventListener('scroll',spy,{passive:true});spy();
+
+  /* =====================================================
+     СТИКЕРЫ: вылетают при скролле, парят, улетают обратно
+     ===================================================== */
+
+  /* ---------- 1. НАСТРОЙКИ ----------
+     Прогресс считается так: 0 = блок с зеркалом только появился снизу экрана,
+     1 = блок полностью ушёл вверх. На твоём скриншоте это примерно 0.45.
+
+     sel    — класс стикера из HTML
+     side   — откуда вылетает: 'left' или 'right'
+     start  — когда начинает выезжать
+     arrive — когда полностью прилетел (конечное положение)
+     leave  — когда начинает уезжать обратно
+     gone   — когда полностью скрылся
+     tilt   — наклон в градусах, с которым он влетает (0 = без наклона)
+  */
+  var STICKERS = [
+    {sel:'.s-omg',      side:'left',  start:0.10, arrive:0.36, leave:0.62, gone:0.88, tilt:-14},
+    {sel:'.s-question', side:'left',  start:0.16, arrive:0.42, leave:0.66, gone:0.92, tilt: 12},
+    {sel:'.s-heart',    side:'left',  start:0.22, arrive:0.46, leave:0.70, gone:0.96, tilt:-10},
+
+    {sel:'.s-cursor',   side:'right', start:0.12, arrive:0.38, leave:0.60, gone:0.86, tilt: 16},
+    {sel:'.s-cool',     side:'right', start:0.18, arrive:0.44, leave:0.68, gone:0.94, tilt:-12},
+    {sel:'.s-flower',   side:'right', start:0.24, arrive:0.48, leave:0.72, gone:0.98, tilt: 14},
+
+    // стрелка в блоке «связь»: выезжает справа и остаётся (wrap — блок, по скроллу которого она едет)
+    {sel:'.s-arrow',    wrap:'.contact', side:'right', start:0.08, arrive:0.32, leave:1.5, gone:1.7, tilt: 16}
+  ];
+
+  var AWAY   = 28;   // как далеко за экраном прячутся стикеры (в vw). Если видно краешек — увеличь
+  var SMOOTH = 0.09; // плавность: меньше = мягче и «тягучее» (0.04 – 0.2)
+  var FLOAT  = 10;   // на сколько пикселей стикеры «парят» вверх-вниз, пока на экране (0 = не парят)
+  var SWAY   = 3;    // на сколько градусов покачиваются при парении (0 = не качаются)
+
+  /* ---------- 2. ПОДГОТОВКА (не трогать) ---------- */
+  var stItems = STICKERS.map(function(c, i){
+    return {el: document.querySelector(c.sel), wrap: document.querySelector(c.wrap || '.frame-wrap'), c: c, cur: 0, phase: i * 1.7};
+  });
+
+  function smooth(t){ t = Math.min(1, Math.max(0, t)); return t*t*(3-2*t); } // плавное начало и конец
+
+  /* ---------- 3. ДВИЖЕНИЕ (не трогать) ---------- */
+  function stickersTick(){
+    var vh = window.innerHeight;
+
+    stItems.forEach(function(it){
+      var c = it.c;
+      if(!it.el || !it.wrap) return;
+      var r  = it.wrap.getBoundingClientRect();
+      var p  = (vh - r.top) / (vh + r.height);   // прогресс скролла блока: 0 → 1
+
+      // goal: 0 = спрятан за краем, 1 = на месте
+      var goal;
+      if(p < c.arrive)      goal = smooth((p - c.start) / (c.arrive - c.start));       // вылетает
+      else if(p <= c.leave) goal = 1;                                                  // на месте
+      else                  goal = 1 - smooth((p - c.leave) / (c.gone - c.leave));     // улетает
+
+      it.cur += (goal - it.cur) * SMOOTH;       // плавно догоняем цель
+
+      var dir = c.side === 'left' ? -1 : 1;
+      var x   = dir * AWAY * window.innerWidth / 100 * (1 - it.cur);   // сдвиг за край
+      var fl  = Math.sin(p * 18 + it.phase);                           // парение зависит от скролла
+      var y   = fl * FLOAT * it.cur;
+      var rot = c.tilt * (1 - it.cur) + fl * SWAY * it.cur;
+
+      it.el.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0) rotate(' + rot + 'deg)';
+    });
+
+    requestAnimationFrame(stickersTick);
+  }
+  stickersTick();
+
+  /* =====================================================
+     БЕЙДЖ НА ЛЕНТЕ: выпадает сверху, качается как маятник,
+     отталкивается от курсора как одноимённый полюс магнита
+     ===================================================== */
+
+  /* ---------- 1. НАСТРОЙКИ ---------- */
+  var BADGE_DELAY  = 1000;  // через сколько миллисекунд после загрузки выпадает (1000 = 1 секунда)
+  var BADGE_FALL   = 3000;  // скорость падения: больше = падает резче
+  var BADGE_BOUNCE = 0.18;  // отскок, когда лента натянулась: 0 = без отскока, 0.4 = сильно подпрыгивает
+  var BADGE_KICK   = 1.1;   // толчок вбок при рывке ленты: 0 = не качнётся, 2 = качнётся сильно
+                            // (минус = качнётся в другую сторону)
+
+  var BADGE_STIFF  = 20;    // «длина верёвки»: больше = качается быстрее и мельче, меньше = медленно и широко
+  var BADGE_DAMP   = 0.7;   // затухание: больше = быстрее успокаивается, 0 = качается бесконечно
+  var BADGE_MAX    = 50;    // максимальный наклон в градусах
+
+  var PUSH_RADIUS  = 26;    // на каком расстоянии от бейджа курсор начинает его отталкивать (в vw)
+  var PUSH_POWER   = 12;    // сила отталкивания: больше = сильнее отклоняется (0 = курсор не влияет)
+
+  /* ---------- 2. ПОДГОТОВКА (не трогать) ---------- */
+  var bdg = document.querySelector('.badge');
+  var bsw = bdg.querySelector('.badge-swing');
+  var bd  = {y:0, vy:0, a:0, w:0, state:'wait'};   // y — высота падения, a — угол, w — скорость качания
+  var bLast = 0, mx = -9999, my = -9999;           // mx, my — где сейчас курсор
+
+  // мышь отталкивает бейдж; палец — нет (его мы обрабатываем отдельно, ниже)
+  window.addEventListener('pointermove', function(e){ if(e.pointerType === 'mouse'){ mx = e.clientX; my = e.clientY; } });
+  document.documentElement.addEventListener('mouseleave', function(){ mx = my = -9999; });
+
+  /* ---------- ПАЛЕЦ: бейдж можно взять и дёрнуть в сторону ---------- */
+  var drag = null;
+  bsw.addEventListener('pointerdown', function(e){
+    if(bd.state !== 'hang') return;
+    var r = bdg.getBoundingClientRect();
+    var pv = parseFloat(getComputedStyle(bdg).getPropertyValue('--pivot-x')) / 100 || 0.35;
+    drag = {id: e.pointerId, px: r.left + r.width * pv, py: r.top, a: bd.a, t: e.timeStamp, v: 0};
+    try{ bsw.setPointerCapture(e.pointerId); }catch(err){}
+  });
+  bsw.addEventListener('pointermove', function(e){
+    if(!drag || e.pointerId !== drag.id) return;
+    var max = BADGE_MAX * Math.PI / 180;
+    var a = Math.atan2(e.clientX - drag.px, Math.max(60, e.clientY - drag.py));
+    a = Math.max(-max, Math.min(max, a));
+    var dt = (e.timeStamp - drag.t) / 1000;
+    if(dt > 0) drag.v = (a - drag.a) / dt;
+    drag.a = a; drag.t = e.timeStamp;
+    bd.a = a; bd.w = 0;
+  });
+  function dragEnd(e){
+    if(!drag || (e && e.pointerId !== drag.id)) return;
+    bd.w = Math.max(-9, Math.min(9, drag.v));   // отпустили — продолжает качаться с той же скоростью
+    drag = null;
+  }
+  bsw.addEventListener('pointerup', dragEnd);
+  bsw.addEventListener('pointercancel', dragEnd);
+  bsw.addEventListener('lostpointercapture', dragEnd);
+
+  function badgeStart(){
+    bd.y = -(bsw.offsetHeight + 60);   // начинаем выше экрана
+    bd.state = 'fall';
+    bLast = performance.now();
+    requestAnimationFrame(badgeTick);
+  }
+  window.addEventListener('load', function(){ setTimeout(badgeStart, BADGE_DELAY); });
+
+  /* ---------- 3. ФИЗИКА (не трогать) ---------- */
+  function badgeTick(now){
+    var dt = Math.min(0.033, (now - bLast) / 1000);
+    bLast = now;
+
+    // падение вниз, пока лента не натянется
+    if(bd.state === 'fall'){
+      bd.vy += BADGE_FALL * dt;
+      bd.y  += bd.vy * dt;
+      if(bd.y >= 0){
+        bd.y = 0;
+        bd.w += BADGE_KICK * Math.min(1, Math.abs(bd.vy) / 1500);   // рывок -> качнулся вбок
+        bd.vy = -bd.vy * BADGE_BOUNCE;                               // небольшой отскок
+        if(Math.abs(bd.vy) < 40){ bd.vy = 0; bd.state = 'hang'; }
+      }
+    }
+
+    // пока бейдж держат пальцем — физика стоит
+    if(drag){
+      bsw.style.transform = 'translateY(' + bd.y + 'px) rotate(' + bd.a + 'rad)';
+      requestAnimationFrame(badgeTick);
+      return;
+    }
+
+    // маятник: возвращающая сила + затухание
+    var acc = -BADGE_STIFF * Math.sin(bd.a) - BADGE_DAMP * bd.w;
+
+    // отталкивание от курсора (считаем от центра бейджа в его спокойном положении)
+    var r  = bdg.getBoundingClientRect();
+    var cx = r.left + r.width * 0.5, cy = r.top + r.height * 0.6;
+    var R  = PUSH_RADIUS * window.innerWidth / 100;
+    var dx = mx - cx, dy = my - cy, d = Math.sqrt(dx*dx + dy*dy);
+    if(d < R){
+      var near = 1 - d / R;                                      // 0 далеко -> 1 вплотную
+      var side = Math.max(-1, Math.min(1, dx / (R * 0.3)));      // курсор слева = -1, справа = +1
+      acc += side * near * PUSH_POWER;                           // слева -> качнёт вправо, и наоборот
+    }
+
+    bd.w += acc * dt;
+    bd.a += bd.w * dt;
+    var max = BADGE_MAX * Math.PI / 180;
+    if(bd.a >  max){ bd.a =  max; bd.w = 0; }
+    if(bd.a < -max){ bd.a = -max; bd.w = 0; }
+
+    bsw.style.transform = 'translateY(' + bd.y + 'px) rotate(' + bd.a + 'rad)';
+    requestAnimationFrame(badgeTick);
+  }
+})();
+
+
+</script>
+
+
+<!-- КУРСОР-ЧЕРНИЛА ВЫКЛЮЧЕН: сейчас на сайте обычный системный курсор.
+     Чтобы вернуть чернильный, убери эту обёртку-комментарий и строку «cursor:none» в style.css (раздел КУРСОР).
+
+<svg class="ink-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <filter id="ink-goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 35 -15" result="goo" />
+      <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+    </filter>
+  </defs>
+</svg>
+<div id="ink-cursor" class="ink-cursor" aria-hidden="true"></div>
+<script src="./ink-cursor.js" defer></script>
+-->
+
+<!-- Печать текста при скролле -->
+<script src="typewriter.js"></script>
+
+<!-- Архив: фото/видео в карточках и попап -->
+<script src="archive.js"></script>
 
 </body>
 </html>
+
