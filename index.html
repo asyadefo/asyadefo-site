@@ -17,7 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,400;1,500;1,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="/favicon.png">
-<!-- Общие части сайта: шапка и подвал (правятся в site.js) -->
+
 <script src="site.js"></script>
 </head>
 <body class="home">
@@ -26,7 +26,7 @@
 
 <main id="top">
 
-  <!-- ===== БЕЙДЖ НА ЛЕНТЕ (выпадает через пару секунд, качается, отталкивается от курсора) ===== -->
+
   <div class="badge"><img class="badge-swing" src="img/badge.png" alt="" draggable="false"></div>
 
   <div class="hero">
@@ -42,7 +42,7 @@
   </div><!-- /hero -->
 
   <section class="about" id="about">
-    <!-- Стрелка вниз: легонько покачивается. Стоит между «asyadefo» и «обо мне» -->
+  
     <svg class="scroll-arrow" viewBox="0 0 146 156" aria-hidden="true"><path d="M73 0V155M1 83L73 155L145 83" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
     <h2><span class="fit" data-fit>обо мне</span></h2>
     <p>Диджитал дизайнер из Санкт-Петербурга. Фокусируюсь <br class="dbr"> на минимализме, ясной структуре и визуальных <br class="dbr"> решениях, которые работают.</p>
@@ -63,7 +63,7 @@
       </div>
     </div>
 
-    <!-- СТИКЕРЫ: порядок здесь не важен. Название файла = src -->
+    <!-- СТИКЕРЫ -->
     <img class="sticker s-omg"      src="img/sticker-omg.png"      alt="">
     <img class="sticker s-question" src="img/sticker-question.png" alt="">
     <img class="sticker s-heart"    src="img/sticker-heart.png"    alt="">
@@ -73,10 +73,7 @@
 
   </div>
 
-  <!-- ===== БЕГУЩАЯ СТРОКА (твои SVG из папки img/marquee/) =====
-       Файлы: marquee-01.svg … marquee-08.svg и marquee-08-hover.svg (кнопка, когда на неё навели).
-       Порядок слева направо: 01 веб-дизайн, 02 айдентика, 03 круг залитый, 04 социальные сети,
-       05 графический дизайнер, 06 эксперимент, 07 круг пустой, 08 «давайте сотрудничать!» -->
+  <!-- БЕГУЩАЯ СТРОКА -->
   <div class="marquee">
     <div class="marquee-track">
 
@@ -94,7 +91,7 @@
         </a>
       </div>
 
-      <!-- Группа 2: точная копия первой, на ней держится бесшовная петля. Удалять нельзя -->
+     
       <div class="marquee-group" aria-hidden="true">
         <img src="img/marquee/marquee-01.svg" alt="">
         <img src="img/marquee/marquee-02.svg" alt="">
@@ -167,19 +164,12 @@
       </a>
     </div>
 
-    <!-- Большая кнопка: при наведении синяя, текст белый. Ведёт вниз, на экран «связь» -->
     <a class="cta-big" href="#contact" data-fit-box data-fit-ratio=".905">
       <span class="cta-text"><span>давайте</span><span class="fit" data-fit>сотрудничать!</span></span>
     </a>
   </section>
 
-  <!-- ===== АРХИВ =====
-       Каждая карточка — кнопка. Что менять:
-         data-media  — путь к фото или видео (.jpg .png .webp .mp4 .webm). Тип понимается по расширению
-         первая строка в .cap — название, вторая — короткая подпись над картинкой
-         .more       — текст для попапа (после клика)
-         style       — --c колонка (0–5), --s сколько колонок занимает (1 или 2),
-                       --y отступ сверху, --ar пропорции картинки (ширина/высота) -->
+  <!-- АРХИВ  -->
   <section class="archive" id="archive" data-fit-box>
     <h2 class="sec-title sec-title--bold"><span class="fit" data-fit>Архив</span></h2>
     <p class="archive__sub">Отдельные проекты, эксперименты и графические решения</p>
@@ -192,7 +182,7 @@
         <span class="more">Создание комикса для коллаборации МЕСТЬ x TORNADO.
           Комикс полностью создавался через ИИ. Печатные версии лежали в каждой коробке новой коллекции кроссовок, которые блогеры получали в рассылке от бренда.</span>
       </button>
-      <!-- 02 · предмет на светлом фоне -->
+      <!-- 02 · коробка -->
       <button class="arch" type="button" style="--c:5;--s:1;--y:10.06vw;--ar:228/193" data-media="img/archive/02.jpg">
         <span class="cap"><span>Упаковка</span><span>Набор для ухода<br>за винилом</span></span>
         <span class="media"><img src="img/archive/box.png" alt="упаковка" loading="lazy"></span>
@@ -337,7 +327,7 @@
     </div>
   </section>
 
-  <!-- ===== ПОП-АП АРХИВА (заполняется скриптом archive.js) ===== -->
+  <!--  ПОП-АП АРХИВА -->
   <div class="pop" id="pop" aria-hidden="true">
     <div class="pop__panel" role="dialog" aria-modal="true" aria-labelledby="pop-title">
       <h3 class="pop__title" id="pop-title"></h3>
@@ -350,12 +340,12 @@
   </div>
 </main>
 
-<!-- Подвал = экран «связь». Сюда ведут все кнопки «давайте сотрудничать!» и пункт меню «связь» -->
+
 <site-footer></site-footer>
 
 <script>
 (function(){
-  /* растягиваем крупные надписи ровно на ширину контейнера */
+
   function fit(){
     document.querySelectorAll('[data-fit]').forEach(function(el){
       var box=el.closest('[data-fit-box],.brand,.about'), cs=getComputedStyle(box);
@@ -377,8 +367,7 @@
   window.addEventListener('load',toHash);
   window.addEventListener('resize',fit);
 
-  /* активный пункт меню: в самом верху сайта не подчёркнут никто,
-     дальше подчёркивается тот раздел, по которому едешь; у самого низа — «связь» */
+ 
   var links=document.querySelectorAll('.nav a[href^="#"]');
   function spy(){
     var y=window.scrollY+window.innerHeight*.4, cur=null, best=-1;
@@ -388,22 +377,7 @@
   }
   window.addEventListener('scroll',spy,{passive:true});spy();
 
-  /* =====================================================
-     СТИКЕРЫ: вылетают при скролле, парят, улетают обратно
-     ===================================================== */
-
-  /* ---------- 1. НАСТРОЙКИ ----------
-     Прогресс считается так: 0 = блок с зеркалом только появился снизу экрана,
-     1 = блок полностью ушёл вверх. На твоём скриншоте это примерно 0.45.
-
-     sel    — класс стикера из HTML
-     side   — откуда вылетает: 'left' или 'right'
-     start  — когда начинает выезжать
-     arrive — когда полностью прилетел (конечное положение)
-     leave  — когда начинает уезжать обратно
-     gone   — когда полностью скрылся
-     tilt   — наклон в градусах, с которым он влетает (0 = без наклона)
-  */
+  
   var STICKERS = [
     {sel:'.s-omg',      side:'left',  start:0.10, arrive:0.36, leave:0.62, gone:0.88, tilt:-14},
     {sel:'.s-question', side:'left',  start:0.16, arrive:0.42, leave:0.66, gone:0.92, tilt: 12},
@@ -413,23 +387,23 @@
     {sel:'.s-cool',     side:'right', start:0.18, arrive:0.44, leave:0.68, gone:0.94, tilt:-12},
     {sel:'.s-flower',   side:'right', start:0.24, arrive:0.48, leave:0.72, gone:0.98, tilt: 14},
 
-    // стрелка в блоке «связь»: выезжает справа и остаётся (wrap — блок, по скроллу которого она едет)
+  
     {sel:'.s-arrow',    wrap:'.contact', side:'right', start:0.08, arrive:0.32, leave:1.5, gone:1.7, tilt: 16}
   ];
 
-  var AWAY   = 28;   // как далеко за экраном прячутся стикеры (в vw). Если видно краешек — увеличь
-  var SMOOTH = 0.09; // плавность: меньше = мягче и «тягучее» (0.04 – 0.2)
-  var FLOAT  = 10;   // на сколько пикселей стикеры «парят» вверх-вниз, пока на экране (0 = не парят)
-  var SWAY   = 3;    // на сколько градусов покачиваются при парении (0 = не качаются)
+  var AWAY   = 28;   
+  var SMOOTH = 0.09; 
+  var FLOAT  = 10;   
+  var SWAY   = 3;    
 
-  /* ---------- 2. ПОДГОТОВКА (не трогать) ---------- */
+  
   var stItems = STICKERS.map(function(c, i){
     return {el: document.querySelector(c.sel), wrap: document.querySelector(c.wrap || '.frame-wrap'), c: c, cur: 0, phase: i * 1.7};
   });
 
-  function smooth(t){ t = Math.min(1, Math.max(0, t)); return t*t*(3-2*t); } // плавное начало и конец
+  function smooth(t){ t = Math.min(1, Math.max(0, t)); return t*t*(3-2*t); } 
 
-  /* ---------- 3. ДВИЖЕНИЕ (не трогать) ---------- */
+
   function stickersTick(){
     var vh = window.innerHeight;
 
@@ -437,19 +411,19 @@
       var c = it.c;
       if(!it.el || !it.wrap) return;
       var r  = it.wrap.getBoundingClientRect();
-      var p  = (vh - r.top) / (vh + r.height);   // прогресс скролла блока: 0 → 1
+      var p  = (vh - r.top) / (vh + r.height);  
 
-      // goal: 0 = спрятан за краем, 1 = на месте
+   
       var goal;
-      if(p < c.arrive)      goal = smooth((p - c.start) / (c.arrive - c.start));       // вылетает
-      else if(p <= c.leave) goal = 1;                                                  // на месте
-      else                  goal = 1 - smooth((p - c.leave) / (c.gone - c.leave));     // улетает
+      if(p < c.arrive)      goal = smooth((p - c.start) / (c.arrive - c.start));      
+      else if(p <= c.leave) goal = 1;                                                 
+      else                  goal = 1 - smooth((p - c.leave) / (c.gone - c.leave));    
 
-      it.cur += (goal - it.cur) * SMOOTH;       // плавно догоняем цель
+      it.cur += (goal - it.cur) * SMOOTH;      
 
       var dir = c.side === 'left' ? -1 : 1;
-      var x   = dir * AWAY * window.innerWidth / 100 * (1 - it.cur);   // сдвиг за край
-      var fl  = Math.sin(p * 18 + it.phase);                           // парение зависит от скролла
+      var x   = dir * AWAY * window.innerWidth / 100 * (1 - it.cur);  
+      var fl  = Math.sin(p * 18 + it.phase);                           
       var y   = fl * FLOAT * it.cur;
       var rot = c.tilt * (1 - it.cur) + fl * SWAY * it.cur;
 
@@ -460,45 +434,36 @@
   }
   stickersTick();
 
-  /* =====================================================
-     БЕЙДЖ НА ЛЕНТЕ: выпадает сверху, качается как маятник,
-     отталкивается от курсора как одноимённый полюс магнита
-     ===================================================== */
+
 
   /* ---------- 1. НАСТРОЙКИ ---------- */
-  var BADGE_DELAY  = 1000;  // через сколько миллисекунд после загрузки выпадает (1000 = 1 секунда)
-  var BADGE_FALL   = 3000;  // скорость падения: больше = падает резче
-  var BADGE_BOUNCE = 0.18;  // отскок, когда лента натянулась: 0 = без отскока, 0.4 = сильно подпрыгивает
-  var BADGE_KICK   = 1.1;   // толчок вбок при рывке ленты: 0 = не качнётся, 2 = качнётся сильно
-                            // (минус = качнётся в другую сторону)
+  var BADGE_DELAY  = 1000;  
+  var BADGE_FALL   = 3000; 
+  var BADGE_BOUNCE = 0.18; 
+  var BADGE_KICK   = 1.1; 
+                           
+  var BADGE_STIFF  = 20;    
+  var BADGE_DAMP   = 0.7;   
+  var BADGE_MAX    = 50;   
+ 
+  var DRAG_FOLLOW  = 14;   
+  var DRAG_ARM     = 0.7;   
+  var PIVOT_X      = 0.35;  
 
-  var BADGE_STIFF  = 20;    // «длина верёвки»: больше = качается быстрее и мельче, меньше = медленно и широко
-  var BADGE_DAMP   = 0.7;   // затухание: больше = быстрее успокаивается, 0 = качается бесконечно
-  var BADGE_MAX    = 50;    // максимальный наклон в градусах
+  var PUSH_RADIUS  = 26;   
+  var PUSH_POWER   = 12;    
 
-  /* ТЕЛЕФОН: бейдж тянется за пальцем (курсор на телефоне его не отталкивает) */
-  var DRAG_FOLLOW  = 14;    // как быстро бейдж догоняет палец: больше = резче, меньше = мягче
-  var DRAG_ARM     = 0.7;   // «длина верёвки» для угла: доля высоты бейджа (0.5 – 0.9)
-  var PIVOT_X      = 0.35;  // точка подвеса по горизонтали, должна совпадать с --px в style.css
-
-  var PUSH_RADIUS  = 26;    // на каком расстоянии от бейджа курсор начинает его отталкивать (в vw)
-  var PUSH_POWER   = 12;    // сила отталкивания: больше = сильнее отклоняется (0 = курсор не влияет)
-
-  /* ---------- 2. ПОДГОТОВКА (не трогать) ---------- */
+ 
   var bdg = document.querySelector('.badge');
   var bsw = bdg.querySelector('.badge-swing');
-  var bd  = {y:0, vy:0, a:0, w:0, state:'wait'};   // y — высота падения, a — угол, w — скорость качания
-  var bLast = 0, mx = -9999, my = -9999;           // mx, my — где сейчас курсор
-
+  var bd  = {y:0, vy:0, a:0, w:0, state:'wait'};   
+  var bLast = 0, mx = -9999, my = -9999;         
   window.addEventListener('pointermove', function(e){ if(e.pointerType === 'touch') return; mx = e.clientX; my = e.clientY; });
 
-  /* палец: тянем бейдж за собой, отпустили — он раскачивается дальше сам */
+
   var drag = null;
 
-  /* ---------- ТЕЛЕФОН: бейдж встаёт ровно как в макете ----------
-     Скрипт сам смотрит на badge.png: находит ленту и карточку и ставит бейдж так,
-     чтобы лента выходила из-под синего блока по центру, а карточка была нужного размера.
-     CARD_VW — ширина карточки (в vw), CARD_TOP_VW — на сколько ниже синего блока начинается карточка. */
+ 
   var MOB = window.matchMedia('(max-width:700px)');
   var CARD_VW = 36.5, CARD_TOP_VW = 27;
   var bpiv = {x: 0, y: 0, L: 200}, bmeta = null;
@@ -530,12 +495,12 @@
     var hero = document.querySelector('.hero');
     if(!bmeta || !hero) return;
     var vw = window.innerWidth / 100;
-    var hb = hero.getBoundingClientRect().bottom + window.scrollY;         // нижний край синего блока
-    var bw = CARD_VW * vw / bmeta.wn;                                      // ширина всей картинки бейджа
-    var left = 50 * vw - bmeta.rx * bw;                                    // лента ровно по центру
+    var hb = hero.getBoundingClientRect().bottom + window.scrollY;       
+    var bw = CARD_VW * vw / bmeta.wn;                                     
+    var left = 50 * vw - bmeta.rx * bw;                                   
     var top  = hb + CARD_TOP_VW * vw - bmeta.topN * bw;
     bdg.style.width = bw + 'px'; bdg.style.left = left + 'px'; bdg.style.top = top + 'px';
-    bsw.style.transformOrigin = (bmeta.rx * bw) + 'px ' + (hb - top) + 'px';   // подвес — на кромке синего блока
+    bsw.style.transformOrigin = (bmeta.rx * bw) + 'px ' + (hb - top) + 'px';
     bpiv.x = 50 * vw;
     bpiv.L = ((bmeta.topN + bmeta.botN) / 2) * bw + top - hb;
   }
@@ -545,9 +510,9 @@
   window.addEventListener('load', badgeLayout);
   function dragTo(x){
     var r = bdg.getBoundingClientRect();
-    var px = MOB.matches ? bpiv.x : r.left + r.width * PIVOT_X;               // где подвешен бейдж
-    var L  = MOB.matches ? bpiv.L : bsw.offsetHeight * DRAG_ARM;              // длина «верёвки»
-    drag.target = -Math.atan2(x - px, L);                                     // палец вправо -> бейдж вправо
+    var px = MOB.matches ? bpiv.x : r.left + r.width * PIVOT_X;              
+    var L  = MOB.matches ? bpiv.L : bsw.offsetHeight * DRAG_ARM;             
+    drag.target = -Math.atan2(x - px, L);                                 
   }
   bsw.addEventListener('pointerdown', function(e){
     if(e.pointerType === 'mouse' || bd.state !== 'hang') return;
@@ -562,7 +527,7 @@
   document.documentElement.addEventListener('mouseleave', function(){ mx = my = -9999; });
 
   function badgeStart(){
-    bd.y = -(bsw.offsetHeight + 60);   // начинаем выше экрана
+    bd.y = -(bsw.offsetHeight + 60);   
     bd.state = 'fall';
     bLast = performance.now();
     requestAnimationFrame(badgeTick);
@@ -573,19 +538,20 @@
 };
 if(bsw.complete && bsw.naturalWidth) badgeGo(); else bsw.addEventListener('load', badgeGo);
 window.addEventListener('load', badgeGo);
-  /* ---------- 3. ФИЗИКА (не трогать) ---------- */
+
+  
   function badgeTick(now){
     var dt = Math.min(0.033, (now - bLast) / 1000);
     bLast = now;
 
-    // падение вниз, пока лента не натянется
+    
     if(bd.state === 'fall'){
       bd.vy += BADGE_FALL * dt;
       bd.y  += bd.vy * dt;
       if(bd.y >= 0){
         bd.y = 0;
-        bd.w += BADGE_KICK * Math.min(1, Math.abs(bd.vy) / 1500);   // рывок -> качнулся вбок
-        bd.vy = -bd.vy * BADGE_BOUNCE;                               // небольшой отскок
+        bd.w += BADGE_KICK * Math.min(1, Math.abs(bd.vy) / 1500);   
+        bd.vy = -bd.vy * BADGE_BOUNCE;                              
         if(Math.abs(bd.vy) < 40){ bd.vy = 0; bd.state = 'hang'; }
       }
     }
@@ -593,24 +559,24 @@ window.addEventListener('load', badgeGo);
     var max = BADGE_MAX * Math.PI / 180;
 
     if(drag){
-      // палец держит бейдж: он тянется за пальцем
+    
       var tgt  = Math.max(-max, Math.min(max, drag.target));
       var prev = bd.a;
       bd.a += (tgt - bd.a) * Math.min(1, dt * DRAG_FOLLOW);
-      bd.w  = Math.max(-9, Math.min(9, (bd.a - prev) / Math.max(dt, 0.001)));   // скорость запоминаем, чтобы после отпускания качнулся
+      bd.w  = Math.max(-9, Math.min(9, (bd.a - prev) / Math.max(dt, 0.001)));  
     } else {
-      // маятник: возвращающая сила + затухание
+   
       var acc = -BADGE_STIFF * Math.sin(bd.a) - BADGE_DAMP * bd.w;
   
-      // отталкивание от курсора (считаем от центра бейджа в его спокойном положении)
+      
       var r  = bdg.getBoundingClientRect();
       var cx = r.left + r.width * 0.5, cy = r.top + r.height * 0.6;
       var R  = PUSH_RADIUS * window.innerWidth / 100;
       var dx = mx - cx, dy = my - cy, d = Math.sqrt(dx*dx + dy*dy);
       if(d < R){
-        var near = 1 - d / R;                                      // 0 далеко -> 1 вплотную
-        var side = Math.max(-1, Math.min(1, dx / (R * 0.3)));      // курсор слева = -1, справа = +1
-        acc += side * near * PUSH_POWER;                           // слева -> качнёт вправо, и наоборот
+        var near = 1 - d / R;                                     
+        var side = Math.max(-1, Math.min(1, dx / (R * 0.3)));     
+        acc += side * near * PUSH_POWER;                          
       }
   
       bd.w += acc * dt;
@@ -645,10 +611,10 @@ window.addEventListener('load', badgeGo);
 -->
 
 
-<!-- Печать текста при скролле -->
+
 <script src="typewriter.js"></script>
 
-<!-- Архив: фото/видео в карточках и попап -->
+
 <script src="archive.js"></script>
 
 </body>
