@@ -665,8 +665,8 @@ main{overflow-x:clip}
 
 /* стикеры на телефоне: положение */
 @media (max-width:700px){
-  .frame-wrap .s-omg     {left:1vw !important;  right:auto !important; top:-20% !important; width:25vw !important}
-  .frame-wrap .s-question{left:2vw !important;  right:auto !important; top:20% !important;  width:40vw !important}
+  .frame-wrap .s-omg     {left:1vw !important;  right:auto !important; top:-20% !important; width:5vw !important}
+  .frame-wrap .s-question{left:2vw !important;  right:auto !important; top:20% !important;  width:5vw !important}
   .frame-wrap .s-heart   {left:3vw !important;  right:auto !important; top:80% !important;  width:22vw !important}
 
   .frame-wrap .s-cursor  {right:6vw !important; left:auto !important;  top:-25% !important; width:25vw !important}
