@@ -24,7 +24,7 @@
   <div class="strip" role="img/cover.png" aria-label="Фото автора"></div>
 
   <div class="brand">
-    <h1><span class="fit" data-fit>asyadefó</span></h1>
+    <h1><span class="fit" data-fit>asyadefo<span class="acc">&#769;</span></span></h1>
     <div class="sub">
       <div>я междисциплинарный<br>дизайнер</div>
       <div>и это мое <span class="pill">портфолио!</span></div>
@@ -43,7 +43,10 @@
   <div class="frame-wrap">
 
     <div class="frame">
-      <img class="plate" src="img/plate.png" alt="">
+      <picture>
+        <source media="(max-width:700px)" srcset="img/plate-mobile.png">
+        <img class="plate" src="img/plate.png" alt="">
+      </picture>
       <div class="believe">
         <h3>я считаю,<br>что <small>красиво недостаточно.</small></h3>
         <p>Хороший дизайн должен быть одновременно <br class="dbr"> понятным, функциональным и неожиданным.</p>
@@ -290,7 +293,7 @@
   <section class="contact" id="contact">
     <img class="sticker s-arrow" src="img/sticker-cursor.png" alt="">
 
-    <h2 class="contact__title" data-fit-box data-fit-ratio=".722"><span class="fit" data-fit>Есть идея? <i>Обсудим.</i></span></h2>
+    <h2 class="contact__title" data-fit-box data-fit-ratio=".722" data-fit-ratio-m="1"><span class="fit" data-fit><span class="l1">Есть идея?</span> <i class="l2">Обсудим.</i></span></h2>
     <p class="contact__text">Открыта к предложениям о работе, новым командам и проектам, в которых <br class="dbr"> есть пространство для интересных решений.</p>
 
     <div class="contact__grid">
@@ -347,7 +350,7 @@
   function fit(){
     document.querySelectorAll('[data-fit]').forEach(function(el){
       var box=el.closest('[data-fit-box],.brand,.about'), cs=getComputedStyle(box);
-      var target=(box.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight))*(parseFloat(box.getAttribute('data-fit-ratio'))||1);
+      var target=(box.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight))*(parseFloat((window.matchMedia('(max-width:700px)').matches&&box.getAttribute('data-fit-ratio-m'))||box.getAttribute('data-fit-ratio'))||1);
       el.style.fontSize='100px';
       var w=el.getBoundingClientRect().width;
       var size=100*target/w;
