@@ -80,7 +80,7 @@
   const textEl  = pop.querySelector('.pop__text');
   const mediaEl = pop.querySelector('.pop__media');
   const closeBt = pop.querySelector('.pop__close');
-  let lastFocus = null, clearTimer = null;
+  let lastFocus = null, clearTimer = null, openId = 0;
 
   // убираем отступы из текста, переносы строк оставляем
   const tidy = s => s.split('\n').map(l => l.trim()).join('\n').trim();
@@ -105,8 +105,21 @@
     const ratio = box && box.offsetHeight ? box.offsetWidth / box.offsetHeight : 1.5;
     setPortrait(ratio < 0.95);
 
-    const src = card.dataset.media;
-    if (src) {
+    // что показывать в попапе: сначала файл из data-media (цветной оригинал),
+    // а если его нет на сервере — тот же файл, что стоит в самой карточке
+    const own    = box && box.querySelector('video, img');
+    const ownSrc = own ? (own.getAttribute('src') || '') : '';
+    const list   = [card.dataset.media, ownSrc].filter((s, i, arr) => s && arr.indexOf(s) === i);
+    const token  = ++openId;
+
+    const tryMedia = i => {
+      if (token !== openId) return;                       // окно уже закрыли или открыли другое
+      if (i >= list.length) {                             // ни один файл не нашёлся — серая заглушка
+        mediaEl.classList.add('is-empty');
+        mediaEl.style.aspectRatio = ratio;
+        return;
+      }
+      const src = list[i];
       let el;
       if (VIDEO.test(src)) {
         el = makeVideo(src);
@@ -118,14 +131,11 @@
         el.alt = titleEl.textContent;
         el.addEventListener('load', () => setPortrait(el.naturalHeight > el.naturalWidth * 1.05), { once: true });
       }
-      el.addEventListener('error', () => {
-        el.remove();
-        mediaEl.classList.add('is-empty');
-        mediaEl.style.aspectRatio = ratio;
-      }, { once: true });
+      el.addEventListener('error', () => { el.remove(); tryMedia(i + 1); }, { once: true });
       mediaEl.appendChild(el);
       if (el.play) el.play().catch(() => {});
-    }
+    };
+    tryMedia(0);
 
     pop.classList.add('is-open');
     pop.setAttribute('aria-hidden', 'false');
