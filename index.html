@@ -560,7 +560,12 @@
     bLast = performance.now();
     requestAnimationFrame(badgeTick);
   }
-  window.addEventListener('load', function(){ setTimeout(badgeStart, BADGE_DELAY); });
+var badgeGo = function(){
+  if(badgeGo.done) return; badgeGo.done = true;
+  setTimeout(badgeStart, window.matchMedia('(max-width:700px)').matches ? 0 : BADGE_DELAY);
+};
+if(bsw.complete && bsw.naturalWidth) badgeGo(); else bsw.addEventListener('load', badgeGo);
+window.addEventListener('load', badgeGo);
 
   /* ---------- 3. ФИЗИКА (не трогать) ---------- */
   function badgeTick(now){
