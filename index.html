@@ -616,7 +616,31 @@ window.addEventListener('load', badgeGo);
 
 
 <script src="archive.js"></script>
+  
 
+<script>
+(function(){
+  function clean(){ history.replaceState(null, '', location.pathname + location.search); }
+
+  
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href^="#"]');
+    if(!a) return;
+    var id = a.getAttribute('href').slice(1);
+    var target = id ? document.getElementById(id) : document.documentElement;
+    if(!target) return;
+    e.preventDefault();
+    target.scrollIntoView({behavior: 'smooth', block: 'start'});
+    clean();
+  });
+
+
+  if(location.hash){
+    window.addEventListener('load', function(){ setTimeout(clean, 1500); });
+  }
+})();
+</script>
+  
 </body>
 </html>
 
