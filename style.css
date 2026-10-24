@@ -561,6 +561,16 @@ site-header,site-footer{display:block}
   .s-arrow{width:22vw;top:0}
 }
 
+/* стикеры на телефоне: конечное положение (влетают, как и на компьютере) */
+@media(max-width:700px){
+  .s-omg     {left:1vw;  top:-8%;   width:26vw}
+  .s-question{left:2vw;  top:40%;  width:20vw}
+  .s-heart   {left:3vw;  top:80%;  width:22vw}
+
+  .s-cursor  {right:6vw; top:-15%;   width:20vw}
+  .s-cool    {right:1vw; top:38%;  width:18vw}
+  .s-flower  {right:2vw; top:90%;  width:24vw}
+}
 
 /* =====================================================
    ПРАВКИ (октябрь): телефон-главная, бургер, бегущая строка, архив
