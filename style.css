@@ -663,13 +663,13 @@ main{overflow-x:clip}
   .contact__text{margin-top:4.5vw}
 }
 
-/* стикеры на телефоне: конечное положение (влетают, как и на компьютере) */
-@media(max-width:700px){
-  .s-omg     {left:1vw;  top:-20%;   width:60vw}
-  .s-question{left:2vw;  top:20%;  width:40vw}
-  .s-heart   {left:3vw;  top:80%;  width:22vw}
+/* стикеры на телефоне: положение */
+@media (max-width:700px){
+  .frame-wrap .s-omg     {left:1vw !important;  right:auto !important; top:-20% !important; width:60vw !important}
+  .frame-wrap .s-question{left:2vw !important;  right:auto !important; top:20% !important;  width:40vw !important}
+  .frame-wrap .s-heart   {left:3vw !important;  right:auto !important; top:80% !important;  width:22vw !important}
 
-  .s-cursor  {right:6vw; top:-25%;   width:60vw}
-  .s-cool    {right:1vw; top:38%;  width:25vw}
-  .s-flower  {right:2vw; top:100%;  width:60vw}
+  .frame-wrap .s-cursor  {right:6vw !important; left:auto !important;  top:-25% !important; width:60vw !important}
+  .frame-wrap .s-cool    {right:1vw !important; left:auto !important;  top:38% !important;  width:25vw !important}
+  .frame-wrap .s-flower  {right:2vw !important; left:auto !important;  top:100% !important; width:60vw !important}
 }
