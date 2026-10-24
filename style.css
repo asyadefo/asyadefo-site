@@ -659,7 +659,7 @@ main{overflow-x:clip}
 .plate{position:absolute;display:block}
 
 /* «связь» на телефоне: стрелка справа от заголовка, не заходит на текст (по макету) */
-@media(max-width:700px){
+@media(max-width:1200px){
   .s-arrow{right:2.4vw;top:2vw;width:20.7vw}
   .contact__text{margin-top:3.5vw}
 }
