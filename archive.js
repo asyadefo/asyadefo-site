@@ -32,21 +32,10 @@
     return v;
   }
 
-  // какой файл показывать: сначала то, что уже лежит внутри .media (старый формат), иначе data-media
-  const mediaSrc = card => {
-    const el = card.querySelector('.media img, .media video');
-    return (el && el.getAttribute('src')) || card.dataset.media || '';
-  };
-
   cards.forEach(card => {
-    const src = mediaSrc(card);
+    const src = card.dataset.media;
     const box = card.querySelector('.media');
     if (!src || !box) return;
-    if (box.querySelector('img, video')) {                 // файл уже стоит в разметке — только запускаем видео
-      const v = box.querySelector('video');
-      if (v) { v.muted = true; v.loop = true; v.playsInline = true; videos.push(v); v.play().catch(() => {}); }
-      return;
-    }
     if (VIDEO.test(src)) {
       const v = makeVideo(src);
       v.addEventListener('error', () => v.remove(), { once: true });
@@ -63,6 +52,14 @@
       box.appendChild(img);
     }
   });
+
+  // на телефоне наведения нет: карточка становится цветной, когда проезжает через середину экрана
+  if ('IntersectionObserver' in window && window.matchMedia('(hover: none)').matches) {
+    const seen = new IntersectionObserver(entries => {
+      entries.forEach(e => e.target.classList.toggle('is-seen', e.isIntersecting));
+    }, { rootMargin: '-38% 0px -38% 0px' });   // «середина» = полоса 24% высоты экрана; меняй проценты, чтобы сузить или расширить
+    cards.forEach(c => seen.observe(c));
+  }
 
   // видео вне экрана ставим на паузу, чтобы страница не тормозила
   if ('IntersectionObserver' in window) {
@@ -99,6 +96,8 @@
     titleEl.textContent = card.dataset.title || (caps[0] ? caps[0].textContent.trim() : '');
     textEl.textContent  = more ? tidy(more.textContent) : (caps[1] ? caps[1].textContent.trim() : '');
 
+    if (window.typo) { titleEl.textContent = typo(titleEl.textContent); textEl.textContent = typo(textEl.textContent); }
+
     mediaEl.replaceChildren();
     mediaEl.classList.remove('is-empty');
     mediaEl.style.aspectRatio = '';
@@ -108,7 +107,7 @@
     const ratio = box && box.offsetHeight ? box.offsetWidth / box.offsetHeight : 1.5;
     setPortrait(ratio < 0.95);
 
-    const src = mediaSrc(card);
+    const src = card.dataset.media;
     if (src) {
       let el;
       if (VIDEO.test(src)) {

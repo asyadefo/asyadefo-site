@@ -1,6 +1,6 @@
-:root{--blue:#002FA7;--bg:#F3F3F3;--pad:4.1vw;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--txt:clamp(13px,1.6vw,19px)}
+:root{--blue:#002FA7;--bg:#F3F3F3;--pad:4.1vw;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--txt:clamp(11px,1.6vw,19px)}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;overflow-x:hidden;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--blue);font-family:var(--sans);font-size:var(--txt);line-height:1.2;padding-top:max(44px,4.2vw);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 
@@ -156,6 +156,12 @@ a{color:inherit;text-decoration:none}
 .s-arrow   {right:2.4vw;top:.2vw;  width:10.5vw}   /* стрелка в блоке «связь» */
 
 
+@media(max-width:700px){
+  .nav a:nth-child(1){left:36vw}.nav a:nth-child(2){left:51vw}.nav a:nth-child(3){left:69vw}
+  .frame{width:118vw;margin-left:-9vw}
+  .sub{grid-template-columns:48% 1fr}
+  .badge{left:6vw;width:42vw}   /* на телефоне бейдж крупнее */
+}
 
 
 /* ================= БЕГУЩАЯ СТРОКА (твои SVG) ================= */
@@ -450,7 +456,7 @@ site-header,site-footer{display:block}
 
 /* ================= СТРЕЛКА МЕЖДУ asyadefo И «ОБО МНЕ» ================= */
 .scroll-arrow{
-  position:absolute;left:50%;top:-10.45vw;
+  position:absolute;left:50%;top:-14.45vw;
   width:9.06vw;height:auto;margin-left:-4.53vw;
   color:var(--blue);pointer-events:none;
   animation:arrow-bob 2.4s ease-in-out infinite;   /* 2.4s — скорость покачивания */
@@ -488,135 +494,35 @@ site-header,site-footer{display:block}
 .ccard:hover,.ccard:focus-visible{background:var(--blue);color:#fff;outline:none}
 .ccard__note{margin-top:1vw;font-size:var(--txt);line-height:1.2;color:rgba(0,47,167,.5)}
 
-/* стрелка: линия всегда одной толщины, даже когда стрелка маленькая */
-.scroll-arrow path{vector-effect:non-scaling-stroke;stroke-width:1.6px}
-
-/* ================= ПЕРЕНОСЫ СТРОК: на компьютере и на телефоне разные =================
-   <br class="br-d"> — перенос только на компьютере, <br class="br-m"> — только на телефоне */
-.br-m{display:none}
-
-/* ================= БУРГЕР И МЕНЮ ДЛЯ ТЕЛЕФОНА ================= */
-.burger,.menu{display:none}
-.burger{
-  position:absolute;right:calc(var(--pad) - 11px);top:50%;transform:translateY(-50%);
-  width:44px;height:44px;padding:0;border:0;background:none;color:var(--blue);cursor:pointer;
-}
-.burger span{position:absolute;left:11px;right:11px;height:1.5px;background:currentColor;transition:top .3s,transform .3s}
-.burger span:nth-child(1){top:17px}
-.burger span:nth-child(2){top:26px}
-html.menu-open .burger span:nth-child(1){top:21.5px;transform:rotate(45deg)}
-html.menu-open .burger span:nth-child(2){top:21.5px;transform:rotate(-45deg)}
-
-.menu{
-  position:fixed;left:0;right:0;bottom:0;top:max(44px,4.2vw);z-index:90;
-  flex-direction:column;justify-content:space-between;
-  padding:9vw var(--pad) 10vw;background:var(--bg);overflow:auto;
-  opacity:0;visibility:hidden;transition:opacity .3s ease,visibility 0s linear .3s;
-}
-html.menu-open .menu{opacity:1;visibility:visible;transition:opacity .3s ease}
-html.menu-open,html.menu-open body{overflow:hidden}
-.menu__nav{display:flex;flex-direction:column;align-items:flex-start;gap:2vw}
-.menu__nav a{
-  font-family:var(--serif);font-style:italic;font-weight:400;
-  font-size:16vw;line-height:1.05;letter-spacing:-.02em;color:var(--blue);padding:1vw 0;
-}
-.menu__nav a.active{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.1em}
-.menu__foot{display:flex;flex-direction:column;gap:2.5vw;font-size:var(--txt)}
-.menu__foot a{text-decoration:underline;text-underline-offset:.16em;text-decoration-thickness:1px;width:max-content;padding:1vw 0}
-
-/* ================= ТОЛЬКО ДЛЯ СЕНСОРНЫХ ЭКРАНОВ (нет мышки) =================
-   Наведения на телефоне нет, поэтому «синеет при наведении» заменяем на «синеет, пока нажато» */
-@media (hover:none){
-  .nav a:hover::after{transform:scaleX(0)}
-  .nav a.active:hover::after{transform:scaleX(1)}
-  .marquee-cta:hover .cta-hover{opacity:0}
-  .proj:hover .media,.arch:hover .media{transform:none}
-  .arch:hover .media img,.arch:hover .media video{filter:grayscale(1)}   /* архив на телефоне чёрно-белый, цвет — в попапе */
-  .cta-big:hover,.ccard:hover,.case-btn:hover{background:transparent;color:var(--blue)}
-  .marquee-cta:active .cta-hover{opacity:1}
-  .proj:active .media{transform:scale(.985)}
-  .cta-big:active,.ccard:active,.case-btn:active{background:var(--blue);color:#fff}
-}
-
-/* =====================================================================
-   ТЕЛЕФОН (экран уже 700px). Всё для мобильной версии лежит ТОЛЬКО здесь.
-   Макет телефона рисовался на экране шириной 430px, отступы по краям 5vw.
-   ===================================================================== */
+/* ================= ТЕЛЕФОН ================= */
 @media(max-width:700px){
-  :root{
-    --pad:5vw;                          /* отступы по краям */
-    --txt:clamp(13px,3.6vw,18px);       /* размер всего текста на телефоне */
-  }
-
-  /* ----- шапка: ссылки прячутся, вместо них бургер ----- */
-  .header .logo img{width:74px}
-  .nav{display:none}
-  .burger{display:block}
-  .menu{display:flex}
-
-  /* ----- главная: синий блок вместо фото + бейдж ----- */
-  .strip{height:34vw;min-height:0;background-image:none;background-color:var(--blue)}
-  .badge{left:10vw;width:35vw}                      /* бейдж крупнее */
-  .badge-swing{pointer-events:auto;touch-action:pan-y}   /* его можно дёрнуть пальцем */
-  .brand h1{margin-top:calc(.364em + 3vw)}         /* буквы asyadefo начинаются под синим блоком */
-  .sub{grid-template-columns:56% 1fr;margin-top:4vw}
-
-  /* ----- обо мне ----- */
-  .about{margin-top:34vw}
-  .scroll-arrow{top:-23vw;width:14vw;margin-left:-7vw}
-  .about p{margin-top:5vw;padding-left:0}
-  .br-m{display:inline}
-  .br-d{display:none}
-
-  /* ----- зеркало и стикеры ----- */
-  .frame-wrap{margin-top:9vw}
-  .frame{width:108vw;margin-left:-4vw}
-  .believe{left:20.3cqw;top:47.8cqw}
-  .believe h3{font-size:9.4cqw}
-  .believe h3 small{display:inline-block;white-space:normal;vertical-align:baseline;line-height:1.1;margin-left:1.4cqw}
-  .believe p{padding-left:3.2cqw}
-  .believe p:first-of-type{margin-top:4.5cqw}
-  .s-omg     {left:1.1vw; top:-1.5%; width:23.2vw}
-  .s-cursor  {right:3.6vw;top:-1.8%; width:17.2vw}
-  .s-cool    {right:2.8vw;top:25.2%; width:16.3vw}
-  .s-question{left:1.4vw; top:75%;   width:20.1vw}
-  .s-heart   {left:15.1vw;top:90.8%; width:20.2vw}
-  .s-flower  {right:.4vw; top:85.5%; width:14.1vw}
-
-  /* ----- бегущая строка ----- */
-  .marquee{--mh:max(32px,10vw);margin-top:16vw}
-
-  /* ----- я работала с ними ----- */
-  .works{margin-top:18vw}
-  .works h2{font-size:11vw;margin-bottom:6vw}
+  .marquee{--mh:max(30px,9vw);margin-top:60px}
+  .works{margin-top:16vw}
+  .works h2{font-size:15vw;margin-bottom:6vw}
   .works-grid{grid-template-columns:1fr;grid-template-rows:auto;gap:3vw}
-  .work{display:flex;flex-direction:column;align-items:flex-start;gap:5vw;padding:5vw;border-radius:2.5vw}
-  .work img{width:calc(var(--logo-w,11.5vw)*2.3)}
-  .work--tall{grid-column:1;grid-row:auto;justify-content:flex-start}
+  .work{grid-template-columns:24vw 1fr;column-gap:4vw;padding:5vw;border-radius:2vw}
+  .work img{width:calc(var(--logo-w,11.5vw)*1.8)}
+  .work--tall{grid-column:1;grid-row:auto;display:flex;gap:6vw}
 
-  /* ----- работы: по одной в ряд ----- */
-  .projects,.archive,.contact{--g:3vw}
-  .projects{margin-top:18vw}
+  .projects,.archive{--g:3vw}
+  .projects{margin-top:16vw}
   .projects .sec-title{margin-bottom:8vw}
-  .proj-grid{grid-template-columns:1fr;row-gap:9vw}
-  .proj--a,.proj--b,.proj--c,.proj--d,.proj--e,.proj--f{grid-column:auto}
-  .proj .cap{margin-bottom:2vw;flex-wrap:wrap}
-  .media{border-radius:2vw}
-  .cta-big{width:90vw;margin-top:16vw}
+  .proj-grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:7vw}
+  .proj--a,.proj--b,.proj--d,.proj--e{grid-column:auto}
+  .proj--c,.proj--f{grid-column:1 / -1}
+  .proj .cap{margin-bottom:1.5vw;flex-wrap:wrap}
+  .media{border-radius:1.6vw}
+  .cta-big{width:88vw;margin-top:14vw}
 
-  /* ----- архив: две колонки, широкие карточки на всю ширину ----- */
-  .archive{margin-top:20vw;padding-bottom:12vw}
-  .archive .sec-title{margin-bottom:3vw}
-  .archive__sub{margin-bottom:10vw}
-  .arch-grid{position:static;height:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:row dense;gap:12vw var(--g);align-items:start}
+  .archive{margin-top:18vw}
+  .archive__sub{margin-bottom:9vw}
+  .arch-grid{position:static;height:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12vw 3vw;align-items:start}
   .arch{position:static;width:auto}
   .arch--w{grid-column:1 / -1}
-  .arch .cap{position:static;margin-bottom:2vw}
+  .arch .cap{position:static;margin-bottom:1.5vw}
 
-  /* ----- попап ----- */
   .pop{--pw:92vw;padding:4vw}
-  .pop__panel,.pop__panel.is-portrait{--pw:92vw;border-radius:2.5vw}
-  .pop__close{width:44px;padding:11px;margin:-11px -11px 0 0}
+  .pop__panel,.pop__panel.is-portrait{--pw:92vw;border-radius:2vw}
   .pop__panel.is-portrait{
     grid-template-columns:minmax(0,1fr) auto;grid-template-rows:none;
     grid-template-areas:"title close" "text text" "media media";column-gap:0;
@@ -626,31 +532,114 @@ html.menu-open,html.menu-open body{overflow:hidden}
   .pop__panel.is-portrait .pop__media{margin-top:calc(var(--txt)*.45)}
   .pop__panel.is-portrait .pop__media img,.pop__panel.is-portrait .pop__media video{max-height:62vh}
   .pop__text{margin-top:calc(var(--txt)*2)}
+}
 
-  /* ----- связь ----- */
-  .contact{margin-top:18vw;padding-bottom:24vw}
-  .contact__title .fit{line-height:.95}
-  .contact__text{margin-top:4vw}
-  .contact__grid{grid-template-columns:1fr;row-gap:6vw;margin-top:9vw}
-  .ccard{aspect-ratio:auto;min-height:38vw;padding:4vw;border-radius:2.5vw}
-  .ccard__arrow{right:4vw;top:4vw;width:7vw}
-  .ccard__note{margin-top:2.5vw}
-  .s-arrow{width:22vw;top:-2vw;right:3vw}
-
-  /* ----- подвал ----- */
+@media(max-width:700px){
   .footer{height:auto;padding:12vw var(--pad) 8vw}
   .footer__mark,.footer__info{position:static}
-  .footer__info{margin-top:10vw}
-  .footer__list li{grid-template-columns:28vw 1fr;line-height:1.9}
-  .footer__copy{margin-top:7vw}
+  .footer__info{margin-top:9vw}
+  .footer__list li{grid-template-columns:28vw 1fr;line-height:1.7}
+  .footer__copy{margin-top:6vw}
 
-  /* ----- страница проекта ----- */
-  .case{--r:max(6px,2.3vw)}
-  .case__title{margin-top:8vw;font-size:17vw}
-  .case__sub{margin-top:2vw}
+  .case{--r:6px}
+  .case__title{margin-top:10vw;font-size:18vw}
+  .case__sub{margin-top:3vw}
   .case-gallery{margin-top:6vw}
-  .case-btn{width:60vw;margin-top:9vw}
+  .case-btn{width:58vw;margin-top:9vw}
   .case-link{margin-top:6vw}
-  .back{margin-top:5vw;padding:2.5vw 0}
-  .back--bottom{margin-top:8vw;margin-bottom:14vw}
+  .back{margin-top:5vw}
+  .back--bottom{margin-top:10vw;margin-bottom:14vw}
+}
+
+@media(max-width:700px){
+  .scroll-arrow{top:-12vw;width:14vw;margin-left:-7vw}
+  .contact{margin-top:12vw;padding-bottom:20vw}
+  .contact__grid{grid-template-columns:1fr;row-gap:6vw;margin-top:9vw}
+  .ccard{aspect-ratio:auto;min-height:36vw;padding:4vw;border-radius:2vw}
+  .ccard__arrow{right:4vw;top:4vw;width:7vw}
+  .ccard__note{margin-top:2vw}
+  .s-arrow{width:22vw;top:0}
+}
+
+
+/* =====================================================
+   ПРАВКИ (октябрь): телефон-главная, бургер, бегущая строка, архив
+   ===================================================== */
+
+/* бегущая строка: «давайте сотрудничать!» заливается синим при наведении, текст белеет */
+.marquee-cta{border-radius:999px;transition:background .3s}
+.marquee-cta .cta-hover{display:none}
+.marquee-cta .cta-base{transition:filter .3s}
+.marquee-cta:hover,.marquee-cta:focus-visible{background:var(--blue)}
+.marquee-cta:hover .cta-base,.marquee-cta:focus-visible .cta-base{filter:brightness(0) invert(1)}
+
+/* архив на телефоне: цветная, пока карточка в середине экрана (см. archive.js) */
+.arch.is-seen .media img,.arch.is-seen .media video{filter:none}
+.arch.is-seen .media{transform:scale(var(--zoom))}
+
+/* бургер: на компьютере скрыт */
+.burger{display:none}
+.header{transition:background .3s}
+.header .logo{z-index:3;transition:opacity .3s}
+html.menu-open{overflow:hidden}
+
+@media(max-width:700px){
+  :root{--txt:max(13px,3.5vw)}          /* общий размер текста на телефоне */
+  .dbr{display:none}                     /* переносы строк из десктопа на телефоне не нужны */
+
+  /* ---------- шапка + бургер ---------- */
+  .burger{display:block;position:absolute;right:var(--pad);top:50%;width:34px;height:34px;margin-top:-17px;padding:0;border:0;border-radius:50%;background:transparent;color:var(--blue);cursor:pointer;z-index:3;transition:background .3s}
+  .burger span{position:absolute;left:50%;width:18px;height:1.5px;margin-left:-9px;background:currentColor;transition:transform .3s,top .3s}
+  .burger span:nth-child(1){top:12.5px}
+  .burger span:nth-child(2){top:19.5px}
+  .header.is-top{background:transparent}
+  .header.is-top .logo{opacity:0;pointer-events:none}
+  .header.is-top .burger{background:#fff}          /* над синим блоком: белый кружок */
+  .header.is-open{background:#fff}
+  .header.is-open .logo{opacity:1;pointer-events:auto}
+  .header.is-open .burger{background:transparent}
+  .header.is-open .burger span:nth-child(1){top:16.5px;transform:rotate(45deg)}
+  .header.is-open .burger span:nth-child(2){top:16.5px;transform:rotate(-45deg)}
+
+  /* меню: белый экран с крупными ссылками */
+  .header .nav{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:center;gap:4vw;padding:0 var(--pad);background:#fff;opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s linear .3s}
+  .header.is-open .nav{opacity:1;visibility:visible;transition:opacity .3s}
+  .header .nav a,.header .nav a:nth-child(n){position:relative;left:auto;right:auto;top:auto;transform:none;width:max-content;padding:0 0 .05em;font-family:var(--serif);font-style:italic;font-size:15vw;line-height:1.05}
+
+  /* ---------- главная: синий блок, белый текст, бейдж под ним ---------- */
+  .home{padding-top:0}
+  .hero{position:relative;z-index:25;display:flex;flex-direction:column;justify-content:flex-end;
+    min-height:94.4vw;                   /* высота синего блока */
+    padding-bottom:5vw;background:var(--blue);color:#fff}
+  .hero .strip{display:none}             /* фото на телефоне заменено синим блоком */
+  .hero .brand h1{margin-top:0;line-height:.95}
+  .hero .sub{grid-template-columns:1fr;row-gap:5vw;margin-top:1vw}
+  .hero .sub>div:last-child{text-align:right}
+  .hero .pill{border-color:#fff}
+  .tw .hero .pill{border-color:transparent}
+  .tw .hero .pill.show{border-color:#fff}
+
+  /* бейдж висит под синим блоком; лента выезжает из-под его нижней кромки */
+  .badge{
+    --bw:46vw;                           /* размер бейджа */
+    --px:.35;                            /* точка подвеса по горизонтали (доля ширины картинки) — как PIVOT_X в index.html */
+    --pivot-x:35%;
+    --lift:10vw;                         /* сколько ленты спрятано под синим блоком */
+    top:calc(94.4vw - var(--lift));
+    width:var(--bw);
+    left:calc(50vw - var(--bw)*var(--px));   /* лента строго по центру экрана */
+  }
+  .badge-swing{pointer-events:auto;touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+
+  /* ниже бейджа — стрелка и «обо мне» (как в макете) */
+  .about{margin-top:112vw}
+
+  /* ---------- «я считаю…» : текст целиком внутри белой карточки зеркала ----------
+     Всё считается в cqw (доли ширины зеркала), поэтому текст и карточка масштабируются вместе.
+     Хочешь крупнее/мельче — меняй 2.9cqw; шире/уже — меняй 48cqw. */
+  .believe{width:48cqw}
+  .believe h3 small{font-size:2.9cqw}
+  .believe p{white-space:normal;font-size:2.9cqw;line-height:1.2;padding-left:2cqw}
+  .believe p:first-of-type{margin-top:2.4cqw}
+  .believe p+p{margin-top:1em}
 }

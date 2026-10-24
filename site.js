@@ -17,12 +17,12 @@
 (() => {
 
   /* ---------- НАСТРОЙКИ: ШАПКА ---------- */
-  const HOME = 'index.html';          // файл главной страницы
+  const HOME = './';                  // адрес главной (./ = просто «/», без index.html)
   const LOGO = 'img/logo.png';        // логотип слева
   // Пункты меню слева направо. target — id раздела на главной странице.
   const NAV = [
     { key: 'about',   text: 'обо мне', target: 'about' },
-    { key: 'works',   text: 'работы',  target: 'portfolio-works' },
+    { key: 'works',   text: 'работы',  target: 'works' },
     { key: 'archive', text: 'архив',   target: 'archive' },
     { key: 'contact', text: 'связь',   target: 'contact' },   // «связь» всегда ведёт вниз, в подвал
   ];
@@ -47,26 +47,43 @@
       const links = NAV.map(n =>
         `<a href="${url(n.target)}"${n.key === active ? ' class="active"' : ''}>${n.text}</a>`).join('');
       this.innerHTML =
-        `<header class="header">` +
-        `<a class="logo" href="${home ? '#top' : HOME}" aria-label="asyadefo"><img src="${LOGO}" alt="asyadefo"></a>` +
-        `<nav class="nav">${links}</nav>` +
-        `<button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="site-menu"><span></span><span></span></button>` +
-        `</header>` +
-        // меню на телефоне: открывается по кнопке-бургеру (на компьютере не видно)
-        `<div class="menu" id="site-menu" aria-hidden="true"><nav class="menu__nav">${links}</nav>` +
-        `<p class="menu__foot">${CONTACTS.map(c => `<a href="${c.href}">${c.text}</a>`).join('')}</p></div>`;
+        `<header class="header${home ? ' is-top' : ''}">` +
+        `<a class="logo" href="${HOME}" aria-label="asyadefo"><img src="${LOGO}" alt="asyadefo"></a>` +
+        `<nav class="nav" id="site-nav">${links}</nav>` +
+        `<button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>` +
+        `</header>`;
 
-      const root = document.documentElement;
-      const btn = this.querySelector('.burger'), menu = this.querySelector('.menu');
-      const setOpen = open => {
-        root.classList.toggle('menu-open', open);
-        btn.setAttribute('aria-expanded', open);
-        menu.setAttribute('aria-hidden', !open);
+      const hd = this.querySelector('.header');
+      const bt = this.querySelector('.burger');
+
+      // бургер (виден только на телефоне)
+      const setOpen = o => {
+        hd.classList.toggle('is-open', o);
+        bt.setAttribute('aria-expanded', String(o));
+        document.documentElement.classList.toggle('menu-open', o);
       };
-      btn.addEventListener('click', () => setOpen(!root.classList.contains('menu-open')));
-      menu.addEventListener('click', e => { if (e.target.closest('a')) setOpen(false); });
+      bt.addEventListener('click', () => setOpen(!hd.classList.contains('is-open')));
+      this.querySelectorAll('.nav a').forEach(a => a.addEventListener('click', () => setOpen(false)));
       document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
       window.matchMedia('(min-width: 701px)').addEventListener('change', e => { if (e.matches) setOpen(false); });
+
+      if (home) {
+        // логотип на главной: наверх, без «#top» в адресе
+        this.querySelector('.logo').addEventListener('click', e => {
+          e.preventDefault(); setOpen(false);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          history.replaceState(null, '', location.pathname + location.search);
+        });
+        // на телефоне шапка прозрачная, пока над ней синий блок; потом становится белой
+        const upd = () => {
+          const hero = document.querySelector('.hero');
+          hd.classList.toggle('is-top', !!hero && hero.getBoundingClientRect().bottom > hd.offsetHeight);
+        };
+        window.addEventListener('scroll', upd, { passive: true });
+        window.addEventListener('resize', upd);
+        document.addEventListener('DOMContentLoaded', upd);
+        upd();
+      }
     }
   }
 
@@ -90,7 +107,7 @@
       const mark = this.querySelector('.footer__mark span');
       const fit = () => {
         const wide = window.matchMedia('(min-width: 701px)').matches;
-        const target = window.innerWidth * (wide ? 0.6075 : 0.9);
+        const target = window.innerWidth * (wide ? 0.6075 : 0.918);
         mark.style.fontSize = '100px';
         const w = mark.getBoundingClientRect().width;
         if (w) mark.style.fontSize = (100 * target / w) + 'px';
