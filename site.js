@@ -16,9 +16,13 @@
    ===================================================== */
 (() => {
 
+  // Корень сайта = папка, где лежит site.js. От него считаются логотип и ссылки на главную,
+  // поэтому шапка одинаково работает на / , /concept/ , /404.html и т.д.
+  const ROOT = new URL('.', document.currentScript.src).pathname;
+
   /* ---------- НАСТРОЙКИ: ШАПКА ---------- */
-  const HOME = './';                  // адрес главной (./ = просто «/», без index.html)
-  const LOGO = 'img/logo.png';        // логотип слева
+  const HOME = ROOT;                  // адрес главной: «/» (без index.html)
+  const LOGO = ROOT + 'img/logo.png';        // логотип слева
   // Пункты меню слева направо. target — id раздела на главной странице.
   const NAV = [
     { key: 'about',   text: 'обо мне', target: 'about' },

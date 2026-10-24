@@ -657,3 +657,9 @@ main{overflow-x:clip}
 .picture-fix{display:contents}
 .frame picture{display:contents}
 .plate{position:absolute;display:block}
+
+/* «связь» на телефоне: стрелка справа от заголовка, не заходит на текст (по макету) */
+@media(max-width:700px){
+  .s-arrow{right:2.4vw;top:2vw;width:20.7vw}
+  .contact__text{margin-top:3.5vw}
+}
