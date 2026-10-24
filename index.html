@@ -482,10 +482,60 @@
 
   /* палец: тянем бейдж за собой, отпустили — он раскачивается дальше сам */
   var drag = null;
+
+  /* ---------- ТЕЛЕФОН: бейдж встаёт ровно как в макете ----------
+     Скрипт сам смотрит на badge.png: находит ленту и карточку и ставит бейдж так,
+     чтобы лента выходила из-под синего блока по центру, а карточка была нужного размера.
+     CARD_VW — ширина карточки (в vw), CARD_TOP_VW — на сколько ниже синего блока начинается карточка. */
+  var MOB = window.matchMedia('(max-width:700px)');
+  var CARD_VW = 36.5, CARD_TOP_VW = 27;
+  var bpiv = {x: 0, y: 0, L: 200}, bmeta = null;
+
+  function badgeMeasure(){
+    try{
+      var cw = 160, ch = Math.round(cw * bsw.naturalHeight / bsw.naturalWidth);
+      var c = document.createElement('canvas'); c.width = cw; c.height = ch;
+      var g = c.getContext('2d'); g.drawImage(bsw, 0, 0, cw, ch);
+      var d = g.getImageData(0, 0, cw, ch).data, rows = [], maxW = 0, y, x, a, b;
+      for(y = 0; y < ch; y++){
+        a = -1; b = -1;
+        for(x = 0; x < cw; x++){ if(d[(y * cw + x) * 4 + 3] > 60){ if(a < 0) a = x; b = x; } }
+        rows.push(a < 0 ? null : [a, b + 1]);
+        if(a >= 0) maxW = Math.max(maxW, b + 1 - a);
+      }
+      var first = -1, top = -1, bot = -1;
+      rows.forEach(function(r, i){
+        if(!r) return;
+        if(first < 0) first = i;
+        if(r[1] - r[0] >= maxW * 0.8){ if(top < 0) top = i; bot = i; }
+      });
+      var rr = rows[Math.min(first + 3, top)] || rows[first];
+      bmeta = {rx: (rr[0] + rr[1]) / 2 / cw, wn: maxW / cw, topN: top / cw, botN: (bot + 1) / cw};
+    }catch(err){ bmeta = null; }
+  }
+  function badgeLayout(){
+    if(!MOB.matches){ bdg.style.left = bdg.style.top = bdg.style.width = ''; bsw.style.transformOrigin = ''; return; }
+    var hero = document.querySelector('.hero');
+    if(!bmeta || !hero) return;
+    var vw = window.innerWidth / 100;
+    var hb = hero.getBoundingClientRect().bottom + window.scrollY;         // нижний край синего блока
+    var bw = CARD_VW * vw / bmeta.wn;                                      // ширина всей картинки бейджа
+    var left = 50 * vw - bmeta.rx * bw;                                    // лента ровно по центру
+    var top  = hb + CARD_TOP_VW * vw - bmeta.topN * bw;
+    bdg.style.width = bw + 'px'; bdg.style.left = left + 'px'; bdg.style.top = top + 'px';
+    bsw.style.transformOrigin = (bmeta.rx * bw) + 'px ' + (hb - top) + 'px';   // подвес — на кромке синего блока
+    bpiv.x = 50 * vw;
+    bpiv.L = ((bmeta.topN + bmeta.botN) / 2) * bw + top - hb;
+  }
+  function badgeInit(){ badgeMeasure(); badgeLayout(); }
+  if(bsw.complete && bsw.naturalWidth) badgeInit(); else bsw.addEventListener('load', badgeInit);
+  window.addEventListener('resize', badgeLayout);
+  window.addEventListener('load', badgeLayout);
   function dragTo(x){
     var r = bdg.getBoundingClientRect();
-    var px = r.left + r.width * PIVOT_X;                  // где подвешен бейдж
-    drag.target = -Math.atan2(x - px, bsw.offsetHeight * DRAG_ARM);   // палец вправо -> бейдж вправо
+    var px = MOB.matches ? bpiv.x : r.left + r.width * PIVOT_X;               // где подвешен бейдж
+    var L  = MOB.matches ? bpiv.L : bsw.offsetHeight * DRAG_ARM;              // длина «верёвки»
+    drag.target = -Math.atan2(x - px, L);                                     // палец вправо -> бейдж вправо
   }
   bsw.addEventListener('pointerdown', function(e){
     if(e.pointerType === 'mouse' || bd.state !== 'hang') return;
@@ -578,8 +628,6 @@
 <script src="./ink-cursor.js" defer></script>
 -->
 
-<!-- Типограф: склеивает предлоги со следующим словом (должен идти ДО typewriter.js) -->
-<script src="typograph.js"></script>
 
 <!-- Печать текста при скролле -->
 <script src="typewriter.js"></script>

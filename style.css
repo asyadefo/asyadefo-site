@@ -566,13 +566,6 @@ site-header,site-footer{display:block}
    ПРАВКИ (октябрь): телефон-главная, бургер, бегущая строка, архив
    ===================================================== */
 
-/* бегущая строка: «давайте сотрудничать!» заливается синим при наведении, текст белеет */
-.marquee-cta{border-radius:999px;transition:background .3s}
-.marquee-cta .cta-hover{display:none}
-.marquee-cta .cta-base{transition:filter .3s}
-.marquee-cta:hover,.marquee-cta:focus-visible{background:var(--blue)}
-.marquee-cta:hover .cta-base,.marquee-cta:focus-visible .cta-base{filter:brightness(0) invert(1)}
-
 /* архив на телефоне: цветная, пока карточка в середине экрана (см. archive.js) */
 .arch.is-seen .media img,.arch.is-seen .media video{filter:none}
 .arch.is-seen .media{transform:scale(var(--zoom))}
@@ -587,59 +580,65 @@ html.menu-open{overflow:hidden}
   :root{--txt:max(13px,3.5vw)}          /* общий размер текста на телефоне */
   .dbr{display:none}                     /* переносы строк из десктопа на телефоне не нужны */
 
-  /* ---------- шапка + бургер ---------- */
-  .burger{display:block;position:absolute;right:var(--pad);top:50%;width:34px;height:34px;margin-top:-17px;padding:0;border:0;border-radius:50%;background:transparent;color:var(--blue);cursor:pointer;z-index:3;transition:background .3s}
-  .burger span{position:absolute;left:50%;width:18px;height:1.5px;margin-left:-9px;background:currentColor;transition:transform .3s,top .3s}
-  .burger span:nth-child(1){top:12.5px}
-  .burger span:nth-child(2){top:19.5px}
+  /* ---------- шапка + бургер (как в макете: белый кружок с тремя линиями) ---------- */
+  .burger{display:block;position:absolute;right:var(--pad);top:50%;width:max(40px,10.4vw);height:max(40px,10.4vw);margin-top:calc(max(40px,10.4vw)/-2);padding:0;border:0;border-radius:50%;background:transparent;color:var(--blue);cursor:pointer;z-index:3;transition:background .3s}
+  .burger span{position:absolute;left:27.5%;width:45%;height:1.5px;margin-top:-.75px;background:currentColor;transition:transform .3s,opacity .3s}
+  .burger span:nth-child(1){top:36%}
+  .burger span:nth-child(2){top:50%}
+  .burger span:nth-child(3){top:64%}
   .header.is-top{background:transparent}
   .header.is-top .logo{opacity:0;pointer-events:none}
   .header.is-top .burger{background:#fff}          /* над синим блоком: белый кружок */
   .header.is-open{background:#fff}
   .header.is-open .logo{opacity:1;pointer-events:auto}
   .header.is-open .burger{background:transparent}
-  .header.is-open .burger span:nth-child(1){top:16.5px;transform:rotate(45deg)}
-  .header.is-open .burger span:nth-child(2){top:16.5px;transform:rotate(-45deg)}
+  .header.is-open .burger span:nth-child(1){top:50%;transform:rotate(45deg)}
+  .header.is-open .burger span:nth-child(2){opacity:0}
+  .header.is-open .burger span:nth-child(3){top:50%;transform:rotate(-45deg)}
 
   /* меню: белый экран с крупными ссылками */
   .header .nav{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:center;gap:4vw;padding:0 var(--pad);background:#fff;opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s linear .3s}
   .header.is-open .nav{opacity:1;visibility:visible;transition:opacity .3s}
   .header .nav a,.header .nav a:nth-child(n){position:relative;left:auto;right:auto;top:auto;transform:none;width:max-content;padding:0 0 .05em;font-family:var(--serif);font-style:italic;font-size:15vw;line-height:1.05}
 
-  /* ---------- главная: синий блок, белый текст, бейдж под ним ---------- */
+  /* ---------- главная: синий блок вместо фото, белый текст, бейдж под ним ---------- */
   .home{padding-top:0}
   .hero{position:relative;z-index:25;display:flex;flex-direction:column;justify-content:flex-end;
-    min-height:94.4vw;                   /* высота синего блока */
-    padding-bottom:5vw;background:var(--blue);color:#fff}
+    height:94.7vw;                       /* высота синего блока (из макета) */
+    padding-bottom:2.8vw;background:var(--blue);color:var(--bg)}
   .hero .strip{display:none}             /* фото на телефоне заменено синим блоком */
   .hero .brand h1{margin-top:0;line-height:.95}
-  .hero .sub{grid-template-columns:1fr;row-gap:5vw;margin-top:1vw}
+  .hero .sub{grid-template-columns:1fr;row-gap:7.5vw;margin-top:0;font-size:4.25vw;line-height:1.2}
   .hero .sub>div:last-child{text-align:right}
-  .hero .pill{border-color:#fff}
+  .hero .pill{border-color:var(--bg)}
   .tw .hero .pill{border-color:transparent}
-  .tw .hero .pill.show{border-color:#fff}
+  .tw .hero .pill.show{border-color:var(--bg)}
 
-  /* бейдж висит под синим блоком; лента выезжает из-под его нижней кромки */
+  /* бейдж: лента выезжает из-под нижней кромки синего блока.
+     Точные размеры и положение скрипт считает сам (см. index.html, «бейдж встаёт ровно как в макете»);
+     значения ниже — запасные, если картинку не удалось прочитать. */
   .badge{
-    --bw:46vw;                           /* размер бейджа */
-    --px:.35;                            /* точка подвеса по горизонтали (доля ширины картинки) — как PIVOT_X в index.html */
-    --pivot-x:35%;
-    --lift:10vw;                         /* сколько ленты спрятано под синим блоком */
-    top:calc(94.4vw - var(--lift));
+    --bw:46vw; --px:.5; --pivot-x:50%; --lift:10vw;
+    top:calc(94.7vw - var(--lift));
     width:var(--bw);
-    left:calc(50vw - var(--bw)*var(--px));   /* лента строго по центру экрана */
+    left:calc(50vw - var(--bw)*var(--px));
   }
   .badge-swing{pointer-events:auto;touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 
-  /* ниже бейджа — стрелка и «обо мне» (как в макете) */
-  .about{margin-top:112vw}
+  /* ниже бейджа — стрелка (195vw от верха, как в макете) и «обо мне» */
+  .about{margin-top:112.3vw}
+  .scroll-arrow{top:-12vw;width:13.6vw;margin-left:-6.8vw}
 
-  /* ---------- «я считаю…» : текст целиком внутри белой карточки зеркала ----------
-     Всё считается в cqw (доли ширины зеркала), поэтому текст и карточка масштабируются вместе.
-     Хочешь крупнее/мельче — меняй 2.9cqw; шире/уже — меняй 48cqw. */
-  .believe{width:48cqw}
-  .believe h3 small{font-size:2.9cqw}
-  .believe p{white-space:normal;font-size:2.9cqw;line-height:1.2;padding-left:2cqw}
-  .believe p:first-of-type{margin-top:2.4cqw}
-  .believe p+p{margin-top:1em}
+  /* ---------- зеркало: плашка с текстом ---------- */
+  .frame{width:104vw;margin-left:-2vw}
+
+  /* «я считаю…»: весь текст лежит в безопасной зоне белого листка (измерено по plate.png:
+     от 24.5 до 76 cqw по ширине и от 54 до 103 cqw по высоте). Всё в cqw (доли ширины зеркала),
+     поэтому на любом телефоне листок и текст масштабируются вместе. */
+  .believe{left:24.5cqw;top:53.5cqw;width:51cqw}
+  .believe h3{font-size:8.8cqw;line-height:.8;white-space:normal}
+  .believe h3 small{display:inline-block;width:23cqw;white-space:normal;font-size:2.6cqw;line-height:1.15;margin-left:1cqw}
+  .believe p{white-space:normal;font-size:2.7cqw;line-height:1.18;padding-left:0}
+  .believe p:first-of-type{margin-top:2.2cqw}
+  .believe p+p{margin-top:.8em}
 }

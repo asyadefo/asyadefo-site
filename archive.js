@@ -96,8 +96,6 @@
     titleEl.textContent = card.dataset.title || (caps[0] ? caps[0].textContent.trim() : '');
     textEl.textContent  = more ? tidy(more.textContent) : (caps[1] ? caps[1].textContent.trim() : '');
 
-    if (window.typo) { titleEl.textContent = typo(titleEl.textContent); textEl.textContent = typo(textEl.textContent); }
-
     mediaEl.replaceChildren();
     mediaEl.classList.remove('is-empty');
     mediaEl.style.aspectRatio = '';

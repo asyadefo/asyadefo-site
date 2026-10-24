@@ -50,7 +50,7 @@
         `<header class="header${home ? ' is-top' : ''}">` +
         `<a class="logo" href="${HOME}" aria-label="asyadefo"><img src="${LOGO}" alt="asyadefo"></a>` +
         `<nav class="nav" id="site-nav">${links}</nav>` +
-        `<button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>` +
+        `<button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>` +
         `</header>`;
 
       const hd = this.querySelector('.header');
