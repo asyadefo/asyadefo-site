@@ -561,17 +561,6 @@ site-header,site-footer{display:block}
   .s-arrow{width:22vw;top:0}
 }
 
-/* стикеры на телефоне: конечное положение (влетают, как и на компьютере) */
-@media(max-width:700px){
-  .s-omg     {left:1vw;  top:-20%;   width:60vw}
-  .s-question{left:2vw;  top:20%;  width:40vw}
-  .s-heart   {left:3vw;  top:80%;  width:22vw}
-
-  .s-cursor  {right:6vw; top:-25%;   width:60vw}
-  .s-cool    {right:1vw; top:38%;  width:25vw}
-  .s-flower  {right:2vw; top:100%;  width:60vw}
-}
-
 /* =====================================================
    ПРАВКИ (октябрь): телефон-главная, бургер, бегущая строка, архив
    ===================================================== */
@@ -672,4 +661,15 @@ main{overflow-x:clip}
 @media(max-width:1500px){
   .s-arrow{right:2.4vw;top:2vw;width:20.7vw}
   .contact__text{margin-top:4.5vw}
+}
+
+/* стикеры на телефоне: конечное положение (влетают, как и на компьютере) */
+@media(max-width:700px){
+  .s-omg     {left:1vw;  top:-20%;   width:60vw}
+  .s-question{left:2vw;  top:20%;  width:40vw}
+  .s-heart   {left:3vw;  top:80%;  width:22vw}
+
+  .s-cursor  {right:6vw; top:-25%;   width:60vw}
+  .s-cool    {right:1vw; top:38%;  width:25vw}
+  .s-flower  {right:2vw; top:100%;  width:60vw}
 }
